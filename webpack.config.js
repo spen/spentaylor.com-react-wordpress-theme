@@ -1,6 +1,7 @@
 var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -21,7 +22,10 @@ module.exports = {
             template: './src/index.template.html',
             inject: true
         }),
-        new webpack.NoErrorsPlugin()
+        new webpack.NoErrorsPlugin(),
+        new ExtractTextPlugin("style.css", {
+            allChunks: true
+        })
     ],
     module: {
         loaders: [
@@ -30,6 +34,9 @@ module.exports = {
                 loaders: ['react-hot', 'babel'],
                 exclude: /node_modules/,
                 include: __dirname
+            }, {
+                test: /\.css$/,
+                loader: ExtractTextPlugin.extract("style-loader", "css-loader")
             }, {
                 test: /\.png$/,
                 loader: "url-loader?limit=100000"
