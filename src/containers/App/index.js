@@ -1,11 +1,21 @@
+/*
+ * External Dependencies
+ */
 import React, { Component } from 'react';
 
-export default class AppLayout extends Component {
+/*
+ * Internal Dependencies
+ */
+import Header from 'containers/Header';
+
+export default class App extends Component {
     render() {
+    	const { children } = this.props;
+
         return (
             <div>
-                <h2>Index</h2>
-                { this.props.children }
+            	<Header />
+                { children }
             </div>
         );
     }
