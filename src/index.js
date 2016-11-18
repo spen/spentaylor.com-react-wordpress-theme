@@ -13,6 +13,7 @@ import App from 'containers/App';
 import ExamplePage from 'containers/Example';
 
 import 'assets/old-styles.css';
+import 'assets/temp-styles.css';
 
 const history = new createBrowserHistory();
 const rootElement = document.getElementById('root');

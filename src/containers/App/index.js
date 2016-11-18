@@ -13,12 +13,14 @@ export default class App extends Component {
 	render() {
 		const { children } = this.props;
 
-		return (
-			<div >
-				<Intro />
-				<Header />
-				{ children }
-			</div>
-		);
-	}
+        return (
+            <div className = { 'page-wrap ' + (children ? 'content-state' : 'intro-state') }>
+		<div className="landing">
+			<Intro />
+		</div>
+		<Header />
+                { children }
+            </div>
+        );
+    }
 }

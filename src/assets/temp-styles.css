@@ -1,0 +1,12 @@
+#root {
+	height: 100%;
+}
+
+.header {
+	overflow: hidden;
+	margin-top: 0;
+}
+
+.header a {
+	color: white;
+}
