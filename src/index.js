@@ -12,6 +12,8 @@ import createBrowserHistory from 'history/lib/createBrowserHistory';
 import App from 'containers/App';
 import ExamplePage from 'containers/Example';
 
+import 'assets/old-styles.css';
+
 const history = new createBrowserHistory();
 const rootElement = document.getElementById('root');
 
