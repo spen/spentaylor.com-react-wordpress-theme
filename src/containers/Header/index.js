@@ -9,7 +9,10 @@ export default class Header extends Component {
 		return (
 			<ul role="nav" className="header">
 				<li><Link to="/">Root</Link></li>
-				<li><Link to="/example">Example</Link></li>
+				<li><Link to="/about">About</Link></li>
+				<li><Link to="/projects">Projects</Link></li>
+				<li><Link to="/blog">Blog</Link></li>
+				<li><Link to="/contact">Contact</Link></li>
 			</ul>
 		);
 	}
