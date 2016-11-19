@@ -8,7 +8,10 @@
     "normalize.css": "^5.0.0",
     "react": "^0.14.0-rc1",
     "react-dom": "^0.14.3",
+    "react-redux": "^4.4.6",
     "react-router": "1.0.0-rc1",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.13.0",
     "styled-components": "^1.0.11"
   },
   "devDependencies": {
