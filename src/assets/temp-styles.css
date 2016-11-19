@@ -15,16 +15,6 @@ html {
 	height: 100%;
 }
 
-.header {
-	overflow: hidden;
-	margin-top: 0;
-}
-
-.header li {
-	display: inline-block;
-	padding: 10px 20px;
-}
-
 .header a {
 	color: white;
 }
