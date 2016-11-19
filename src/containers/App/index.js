@@ -1,9 +1,9 @@
-/*
+/**
  * External Dependencies
  */
 import React, { Component } from 'react';
 
-/*
+/**
  * Internal Dependencies
  */
 import Header from 'containers/Header';
@@ -14,7 +14,7 @@ export default class App extends Component {
 		const { children } = this.props;
 
 		return (
-			<div className = { 'page-wrap ' + (children ? 'content-state' : 'intro-state') }>
+			<div className = { 'page-wrap ' + ( children ? 'content-state' : 'intro-state' ) }>
 				<div className="landing">
 					<Intro />
 				</div>
