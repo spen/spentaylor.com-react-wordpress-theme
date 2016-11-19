@@ -7,6 +7,7 @@ import styled from 'styled-components';
 /**
  * Internal Dependencies
  */
+import Cell from 'components/Cell';
 import StyledIntro from './styles/intro';
 
 const StyledHeader = styled.h2`
@@ -18,7 +19,9 @@ export default class Intro extends Component {
 	render() {
 		return (
 			<StyledIntro>
-				<StyledHeader>Intro</StyledHeader>
+				<Cell>
+					<StyledHeader>Intro</StyledHeader>
+				</Cell>
 			</StyledIntro>
 		);
 	}
