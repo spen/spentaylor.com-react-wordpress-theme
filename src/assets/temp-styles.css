@@ -1,3 +1,16 @@
+* {
+	box-sizing: border-box;
+	text-decoration: none;
+}
+
+html, body {
+	height: 100%;
+}
+
+html {
+	overflow: hidden;
+}
+
 #root {
 	height: 100%;
 }
