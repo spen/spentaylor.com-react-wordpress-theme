@@ -6,6 +6,8 @@ import { Router, Route } from 'react-router';
 import ReactDOM from 'react-dom';
 import CreateBrowserHistory from 'history/lib/createBrowserHistory';
 
+import 'normalize.css';
+
 /**
  * Internal Dependencies
  */
@@ -16,7 +18,6 @@ import BlogPage from 'containers/BlogPage';
 import ContactPage from 'containers/ContactPage';
 import ProjectsPage from 'containers/ProjectsPage';
 
-import 'assets/old-styles.css';
 import 'assets/temp-styles.css';
 
 const history = new CreateBrowserHistory();
