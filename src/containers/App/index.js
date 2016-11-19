@@ -15,10 +15,10 @@ export default class App extends Component {
 
         return (
             <div className = { 'page-wrap ' + (children ? 'content-state' : 'intro-state') }>
-		<div className="landing">
-			<Intro />
-		</div>
-		<Header />
+				<div className="landing">
+					<Intro />
+				</div>
+				<Header />
                 { children }
             </div>
         );
