@@ -9,16 +9,18 @@ import React, { Component } from 'react';
 import Header from 'containers/Header';
 import Intro from 'containers/Intro';
 
+import PageWrap from './styles/App';
+
 export default class App extends Component {
 	render() {
 		const { children } = this.props;
 
 		return (
-			<div className = { 'page-wrap ' + ( children ? 'content-state' : 'intro-state' ) }>
+			<PageWrap open={ !! children }>
 				<Intro />
 				<Header />
 				{ children }
-			</div>
+			</PageWrap>
 		);
 	}
 }
