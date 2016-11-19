@@ -26,5 +26,8 @@
     "clean": "rimraf dist",
     "build": "npm run clean && webpack",
     "start": "npm run build && node server.js"
-  }
+  },
+  "main": "src/index.js",
+  "repository": "git@github.com:spen/spen.github.io-react.git",
+  "author": "Spen Taylor <spen_@hotmail.co.uk>"
 }
