@@ -14,10 +14,12 @@ Just tracking so I don't miss things!
 - [ ] Transitions
   - [ ] Intro / Content
   - [ ] Prev / Next
+  - [ ] Touch Gestures
 - [ ] Integrations
   - [ ] Wordpress Rest API
   - [ ] FormSpree
 - [ ] CSS
+  - [ ] Icons - Font Awesome?
   - [ ] Port Original
   - [ ] Styled Components!?
 - [ ] State
