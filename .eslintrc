@@ -1,12 +1,14 @@
 {
-    "parserOptions": {
-        "ecmaVersion": 6,
-        "sourceType": "module",
-        "ecmaFeatures": {
-            "jsx": true
-        }
-    },
-    "rules": {
-        "semi": 2
-    }
+	extends: 'wpcalypso/react',
+	rules: {
+		'comma-dangle': [
+			2,
+			'always-multiline'
+	    ],
+	    'wpcalypso/jsx-classname-namespace' : 0
+	},
+	globals: {
+    	window: true,
+    	document: true
+  	}
 }
