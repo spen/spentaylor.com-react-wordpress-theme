@@ -8,6 +8,7 @@
     "normalize.css": "^5.0.0",
     "react": "^0.14.0-rc1",
     "react-dom": "^0.14.3",
+    "react-icons": "^2.2.1",
     "react-redux": "^4.4.6",
     "react-router": "2.0.0-rc1",
     "react-router-redux": "^4.0.7",
@@ -44,7 +45,9 @@
     "start": "npm run build && node server.js",
     "lint": "eslint src"
   },
-  "pre-commit": [ "lint" ],
+  "pre-commit": [
+    "lint"
+  ],
   "main": "src/index.js",
   "repository": "git@github.com:spen/spen.github.io-react.git",
   "author": "Spen Taylor <spen_@hotmail.co.uk>"
