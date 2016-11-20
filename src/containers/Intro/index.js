@@ -8,6 +8,7 @@ import styled from 'styled-components';
  * Internal Dependencies
  */
 import Cell from 'components/Cell';
+import SocialIconGroup from 'containers/SocialIconGroup';
 import StyledIntro from './styles/intro';
 
 const StyledHeader = styled.h2`
@@ -21,6 +22,7 @@ export default class Intro extends Component {
 			<StyledIntro>
 				<Cell>
 					<StyledHeader>Intro</StyledHeader>
+					<SocialIconGroup />
 				</Cell>
 			</StyledIntro>
 		);
