@@ -2,9 +2,10 @@
  * External Dependencies
  */
 import React from 'react';
-import { Router, Route } from 'react-router';
 import ReactDOM from 'react-dom';
-import CreateBrowserHistory from 'history/lib/createBrowserHistory';
+import { Provider } from 'react-redux';
+import { browserHistory, Route, Router } from 'react-router';
+import { syncHistoryWithStore } from 'react-router-redux';
 
 import 'normalize.css';
 
@@ -17,21 +18,26 @@ import AboutPage from 'containers/AboutPage';
 import BlogPage from 'containers/BlogPage';
 import ContactPage from 'containers/ContactPage';
 import ProjectsPage from 'containers/ProjectsPage';
+import configureStore from './store';
 
 import 'assets/temp-styles.css';
 
-const history = new CreateBrowserHistory();
+const store = configureStore( {}, browserHistory );
+const history = syncHistoryWithStore( browserHistory, store );
+
 const rootElement = document.getElementById( 'root' );
 
 ReactDOM.render(
-    <Router history={ history }>
-        <Route path="/" component={ App }>
-            <Route path="/about" component={ AboutPage } />
-            <Route path="/blog" component={ BlogPage } />
-            <Route path="/contact" component={ ContactPage } />
-            <Route path="/projects" component={ ProjectsPage } />
-            <Route path="*" />
-        </Route>
-    </Router>,
-    rootElement
+	<Provider store={ store }>
+		<Router history={ history }>
+			<Route path="/" component={ App }>
+				<Route path="/about" component={ AboutPage } />
+				<Route path="/blog" component={ BlogPage } />
+				<Route path="/contact" component={ ContactPage } />
+				<Route path="/projects" component={ ProjectsPage } />
+				<Route path="*" />
+			</Route>
+		</Router>
+	</Provider>,
+	rootElement
 );
