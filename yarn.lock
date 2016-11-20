@@ -1856,7 +1856,7 @@ he@1.0.x:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/he/-/he-1.0.0.tgz#6da5b265d7f2c3b5e480749168e0e159d05728da"
 
-history@^1.9.0:
+history@^1.17.0, history@^1.9.0:
   version "1.17.0"
   resolved "https://registry.yarnpkg.com/history/-/history-1.17.0.tgz#c5483caa5a1d1fea00a1a7d8d19b874016711d29"
   dependencies:
@@ -3306,11 +3306,15 @@ react-redux@^4.4.6:
     lodash "^4.2.0"
     loose-envify "^1.1.0"
 
-react-router@1.0.0-rc1:
-  version "1.0.0-rc1"
-  resolved "https://registry.yarnpkg.com/react-router/-/react-router-1.0.0-rc1.tgz#0044af437eef08f86bde34dde2c767c254fb5493"
+react-router-redux@^4.0.7:
+  version "4.0.7"
+  resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.7.tgz#9b1fde4e70106c50f47214e12bdd888cfb96e2a6"
+
+react-router@2.0.0-rc1:
+  version "2.0.0-rc1"
+  resolved "https://registry.yarnpkg.com/react-router/-/react-router-2.0.0-rc1.tgz#e7442d95810a59d212d5342c8478d3dbd716d2fc"
   dependencies:
-    history "^1.9.0"
+    history "^1.17.0"
     invariant "^2.0.0"
     warning "^2.0.0"
 
