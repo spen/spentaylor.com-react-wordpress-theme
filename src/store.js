@@ -18,10 +18,11 @@ export default function( initialState = {}, history ) {
 		routerMiddleware( history ),
 	];
 
+	const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 	const store = createStore(
 		createReducer(),
 		initialState,
-		compose( applyMiddleware( ...middlewares ) )
+		composeEnhancers( applyMiddleware( ...middlewares ) )
 	);
 
 	// Extensions
