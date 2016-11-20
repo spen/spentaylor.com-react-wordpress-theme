@@ -8,6 +8,7 @@ import styled from 'styled-components';
 /**
  * Internal Dependencies
  */
+import ShowContentButton from './ShowContentButton';
 import StyledHeader from './styles/Header';
 
 const InlineLi = styled.li`
@@ -20,6 +21,7 @@ export default class Header extends Component {
 		return (
 			<StyledHeader show intro>
 				<ul role="nav">
+					<ShowContentButton />
 					<InlineLi><Link to="/">Root</Link></InlineLi>
 					<InlineLi><Link to="/about">About</Link></InlineLi>
 					<InlineLi><Link to="/projects">Projects</Link></InlineLi>
