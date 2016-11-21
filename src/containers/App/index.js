@@ -14,11 +14,12 @@ import PageWrap from './styles/App';
 export default class App extends Component {
 	render() {
 		const { children } = this.props;
+		const showContent = !! children;
 
 		return (
-			<PageWrap open={ !! children }>
+			<PageWrap open={ showContent }>
 				<Intro />
-				<Header />
+				<Header showContent={ showContent } />
 				{ children }
 			</PageWrap>
 		);
