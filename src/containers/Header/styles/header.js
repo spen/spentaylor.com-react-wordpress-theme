@@ -15,7 +15,7 @@ export const headerStyles = css`
     margin-top: 0;
     z-index: 200;
     opacity: ${ props => props.show ? 1 : 0 };
-    background-color: ${ props => props.intro ? 'rgba(0,0,0,0.1)' : 'rgba(255,90,110,1)' };
+    background-color: ${ props => props.showContent ? 'rgba(255,90,110,1)' : 'rgba(0,0,0,0.1)' };
 `;
 
 const Header = styled.div`${ headerStyles }`;
