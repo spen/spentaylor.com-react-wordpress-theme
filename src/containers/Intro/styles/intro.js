@@ -11,20 +11,7 @@ export const introStyles = css`
     width: 100%;
     display: table;
     vertical-align: middle;
-`;
-
-export const contentStyles = css`
-    .cell {
-        display: table-cell;
-        vertical-align: middle;
-    }
-
-    .landing-content {
-        vertical-align: middle;
-        margin: 0 auto;
-        width: 100%;
-        text-align: center;
-    }
+    text-align: center;
 `;
 
 const Intro = styled.div`${ introStyles }`;
