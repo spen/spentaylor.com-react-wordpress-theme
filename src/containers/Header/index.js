@@ -6,6 +6,7 @@ import React, { Component } from 'react';
  * Internal Dependencies
  */
 import ShowContentButton from './ShowContentButton';
+import ShowIntroButton from './ShowIntroButton';
 import StyledHeader from './styles/Header';
 
 export default class Header extends Component {
@@ -14,7 +15,11 @@ export default class Header extends Component {
 
 		return (
 			<StyledHeader show showContent={ showContent }>
-				<ShowContentButton />
+				{
+					showContent
+						? <ShowIntroButton />
+						: <ShowContentButton />
+				}
 			</StyledHeader>
 		);
 	}
