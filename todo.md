@@ -18,8 +18,10 @@ Just tracking so I don't miss things!
 - [ ] Integrations
   - [ ] Wordpress Rest API
   - [ ] FormSpree
-- [ ] CSS
-  - [ ] Icons - Font Awesome?
+- [ ] Styling
+  - [ ] Icons
+    - [ ] Explore react libs that allow svg styles (shadows particularly)
+    - [ ] Design custom icons?
   - [ ] Port Original
   - [ ] Styled Components!?
 - [ ] State
