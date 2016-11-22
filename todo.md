@@ -5,6 +5,8 @@ Just tracking so I don't miss things!
   - [ ] Layout
     - [ ] Intro
     - [ ] Header
+      - [x] Content/Intro toggle
+      - [ ] Prev / Next buttons
     - [ ] Content Area
   - [ ] Pages
     - [ ] About
