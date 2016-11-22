@@ -8,14 +8,16 @@ import DownIcon from 'react-icons/lib/fa/angle-down';
 
 export class ShowContentButton extends Component {
 	render() {
-		const { previousContentPath } = this.props;
+		const { className, previousContentPath } = this.props;
 
 		if ( ! previousContentPath ) {
 			return null;
 		}
 
 		return (
-			<Link to={ previousContentPath }><DownIcon /></Link>
+			<Link className={ className } to={ previousContentPath }>
+				<DownIcon height="100%" />
+			</Link>
 		);
 	}
 }

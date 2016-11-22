@@ -7,8 +7,11 @@ import BarsIcon from 'react-icons/lib/fa/bars';
 
 export class ShowContentButton extends Component {
 	render() {
+		const { className } = this.props;
 		return (
-			<IndexLink to="/"><BarsIcon /></IndexLink>
+			<IndexLink className={ className } to="/">
+				<BarsIcon height="100%" />
+			</IndexLink>
 		);
 	}
 }
