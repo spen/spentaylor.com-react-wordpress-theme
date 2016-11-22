@@ -1,0 +1,3 @@
+// Projects
+export const PROJECTS_FETCH = 'PROJECTS_FETCH';
+export const PROJECTS_RECEIVE = 'PROJECTS_RECEIVE';
