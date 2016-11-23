@@ -1,7 +1,7 @@
 const initialState = {
-	found: 0,
-	posts: [],
-	current: null,
+	list: [],
+	total: null,
+	currentId: null,
 };
 
 export default initialState;

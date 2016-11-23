@@ -4,20 +4,31 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+/**
+ * Internal Dependencies
+ */
+import { fetchProjects } from 'state/projects/actions';
+import CurrentProject from './CurrentProject';
+
 export class ProjectsPage extends Component {
+
+	componentWillMount() {
+		this.props.onEnter();
+	}
+
 	render() {
 		return (
-			<h2 onClick={ this.props.trigger } >Projects</h2>
+			<div>
+				<CurrentProject />
+			</div>
 		);
 	}
 }
 
 function mapDispatchToProps( dispatch ) {
 	return {
-		trigger: () => {
-			dispatch( {
-				type: 'PROJECTS_FETCH',
-			} );
+		onEnter: () => {
+			dispatch( fetchProjects() );
 		},
 	};
 }
