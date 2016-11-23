@@ -8,6 +8,7 @@ import { combineReducers } from 'redux';
  * Internal Dependencies
  */
 import contentPaths from 'constants/contentPaths';
+import blogReducer from 'state/blog/reducer';
 import projectsReducer from 'state/projects/reducer';
 
 const routeInitialState = {
@@ -38,6 +39,7 @@ export function routerReducer( state = routeInitialState, action ) {
 
 export default function createReducer( asyncReducers ) {
 	return combineReducers( {
+		blog: blogReducer,
 		routing: routerReducer,
 		projects: projectsReducer,
 		...asyncReducers,

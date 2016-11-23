@@ -10,6 +10,7 @@ import createSagaMiddleware from 'redux-saga';
  */
 import createReducer from './reducers';
 
+import { getPostsWatcher } from 'state/blog/sagas';
 import { getProjectsWatcher } from 'state/projects/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -30,6 +31,7 @@ export default function( initialState = {}, history ) {
 	// Extensions
 	store.runSaga = sagaMiddleware.run;
 
+	sagaMiddleware.run( getPostsWatcher );
 	sagaMiddleware.run( getProjectsWatcher );
 
 	// Make reducers hot reloadable, see http://mxs.is/googmo
