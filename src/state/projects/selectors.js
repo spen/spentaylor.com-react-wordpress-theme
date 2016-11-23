@@ -3,7 +3,7 @@
  */
 import { find, get } from 'lodash';
 
-export function getCurrentProjects( state ) {
+export function getProjects( state ) {
 	return get( state, 'projects.list' );
 }
 
@@ -12,7 +12,7 @@ export function getCurrentProjectId( state ) {
 }
 
 export function getCurrentProject( state ) {
-	const projects = getCurrentProjects( state );
+	const projects = getProjects( state );
 	const currentId = getCurrentProjectId( state );
 
 	if ( ! projects || ! currentId ) {
