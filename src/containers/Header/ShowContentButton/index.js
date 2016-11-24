@@ -6,6 +6,8 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import DownIcon from 'react-icons/lib/fa/angle-down';
 
+import { getCurrentContentPath } from 'state/routing/selectors';
+
 export class ShowContentButton extends Component {
 	render() {
 		const { className, currentContentPath } = this.props;
@@ -23,7 +25,7 @@ export class ShowContentButton extends Component {
 }
 
 function mapStateToProps( state ) {
-	const currentContentPath = state.routing.currentContentPath;
+	const currentContentPath = getCurrentContentPath( state );
 
 	return {
 		currentContentPath,
