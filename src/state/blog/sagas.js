@@ -8,7 +8,7 @@ import { call, put, take } from 'redux-saga/effects';
  */
 import { recievePosts } from './actions';
 import { SITE_URL } from 'constants/wp';
-import { POSTS_FETCH } from 'state/action-types';
+import { BLOG_POSTS_FETCH } from 'state/action-types';
 import request from 'utils/request';
 
 export function* getPosts() {
@@ -24,7 +24,7 @@ export function* getPosts() {
 }
 
 export function* getPostsWatcher() {
-	while ( yield take( POSTS_FETCH ) ) {
+	while ( yield take( BLOG_POSTS_FETCH ) ) {
 		yield call( getPosts );
 	}
 }

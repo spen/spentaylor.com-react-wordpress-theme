@@ -31,13 +31,17 @@ export function getCurrentPostId( state ) {
 	return get( state, 'blog.currentId' );
 }
 
+export function getCurrentPostSlug( state ) {
+	return get( state, 'blog.currentPostSlug' );
+}
+
 export function getCurrentPost( state ) {
 	const posts = getPosts( state );
-	const currentId = getCurrentPostId( state );
+	const currentPostSlug = getCurrentPostSlug( state );
 
-	if ( ! posts || ! currentId ) {
+	if ( ! posts || ! currentPostSlug ) {
 		return null;
 	}
 
-	return getPostById( state, currentId );
+	return getPostBySlug( state, currentPostSlug );
 }

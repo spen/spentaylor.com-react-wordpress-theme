@@ -1,6 +1,7 @@
-// Posts
-export const POSTS_FETCH = 'POSTS_FETCH';
-export const POSTS_RECEIVE = 'POSTS_RECEIVE';
+// Blog
+export const BLOG_POSTS_FETCH = 'BLOG_POSTS_FETCH';
+export const BLOG_POSTS_RECEIVE = 'BLOG_POSTS_RECEIVE';
+export const BLOG_SET_CURRENT_SLUG = 'BLOG_SET_CURRENT_SLUG';
 
 // Projects
 export const PROJECTS_FETCH = 'PROJECTS_FETCH';
