@@ -7,30 +7,49 @@ import { connect } from 'react-redux';
 /**
  * Internal Dependencies
  */
-import { fetchPosts } from 'state/blog/actions';
+import {
+	fetchPosts,
+	setCurrentSlug,
+} from 'state/blog/actions';
+
+import { getPostBySlug } from 'state/blog/selectors';
 import CurrentPost from './CurrentPost';
 
 export class BlogPage extends Component {
 
 	componentWillMount() {
-		this.props.onEnter();
+		const { routedPost } = this.props;
+		if ( ! routedPost ) {
+			this.props.onEnter();
+		}
 	}
 
 	render() {
+		const { routedPost } = this.props;
+
 		return (
 			<div>
-				<CurrentPost />
+				{ !! routedPost && <CurrentPost /> }
 			</div>
 		);
 	}
 }
 
-function mapDispatchToProps( dispatch ) {
+function mapStateToProps( state, props ) {
+	const routedPost = getPostBySlug( state, props.params.slug );
+
+	return {
+		routedPost,
+	};
+}
+
+function mapDispatchToProps( dispatch, props ) {
 	return {
 		onEnter: () => {
+			dispatch( setCurrentSlug( props.params.slug ) );
 			dispatch( fetchPosts() );
 		},
 	};
 }
 
-export default connect( null, mapDispatchToProps )( BlogPage );
+export default connect( mapStateToProps, mapDispatchToProps )( BlogPage );

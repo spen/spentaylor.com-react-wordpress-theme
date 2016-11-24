@@ -6,24 +6,35 @@ import { first } from 'lodash';
 /**
  * Internal Dependencies
  */
-import { POSTS_RECEIVE } from 'state/action-types';
+import {
+	BLOG_POSTS_RECEIVE,
+	BLOG_SET_CURRENT_SLUG,
+} from 'state/action-types';
 import initialState from './initialState';
 
 export default function( state = initialState, action ) {
 	switch ( action.type ) {
-		case POSTS_RECEIVE: {
+		case BLOG_POSTS_RECEIVE: {
 			const { found, posts } = action.payload.data;
-			// TODO: only set this when there is either no previous ID
-			// or the previous ID is invalid
-			const firstPost = first( posts );
+			let currentPostSlug = state.currentPostSlug;
+
+			if ( ! currentPostSlug ) {
+				const firstPost = first( posts );
+				currentPostSlug = firstPost ? firstPost.slug : null;
+			}
 
 			return {
 				...state,
+				currentPostSlug,
 				list: posts,
 				total: found,
-				currentId: firstPost ? firstPost.ID : null,
 			};
 		}
+		case BLOG_SET_CURRENT_SLUG:
+			return {
+				...state,
+				currentPostSlug: action.slug,
+			};
 		default:
 			return state;
 	}
