@@ -3,6 +3,7 @@
  */
 import { LOCATION_CHANGE } from 'react-router-redux';
 import { combineReducers } from 'redux';
+import { chain, includes } from 'lodash';
 
 /**
  * Internal Dependencies
@@ -15,6 +16,14 @@ const routeInitialState = {
 	locationBeforeTransitions: null,
 };
 
+function getContentPathSegment( path ) {
+	return chain( path )
+		.split( '/' )
+		.compact()
+		.first()
+		.value();
+}
+
 export function routerReducer( state = routeInitialState, action ) {
 	switch ( action.type ) {
 		case LOCATION_CHANGE: {
@@ -22,12 +31,13 @@ export function routerReducer( state = routeInitialState, action ) {
 				...state,
 				locationBeforeTransitions: action.payload,
 			};
+			const contentPath = getContentPathSegment( action.payload.pathname );
 
 			if (
 				action.payload.pathname &&
-				contentPaths.indexOf( action.payload.pathname ) !== -1
+				includes( contentPaths, contentPath )
 			) {
-				newState.previousContentPath = action.payload.pathname;
+				newState.currentContentPath = action.payload.pathname;
 			}
 
 			return newState;

@@ -1,6 +1,6 @@
 export default [
-	'/about',
-	'/blog',
-	'/contact',
-	'/projects',
+	'about',
+	'blog',
+	'contact',
+	'projects',
 ];
