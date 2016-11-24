@@ -15,7 +15,7 @@ import StyledHeader from './styles/Header';
 export class Header extends Component {
 	render() {
 		const { showContent } = this.props;
-		const isVisible = !! this.props.previousContentPath;
+		const isVisible = !! this.props.currentContentPath;
 		const Button = showContent ? ShowIntroButton : ShowContentButton;
 		const StyledButton = buttonStyler( Button );
 
@@ -28,10 +28,10 @@ export class Header extends Component {
 }
 
 function mapStateToProps( state ) {
-	const previousContentPath = state.routing.previousContentPath;
+	const currentContentPath = state.routing.currentContentPath;
 
 	return {
-		previousContentPath,
+		currentContentPath,
 	};
 }
 

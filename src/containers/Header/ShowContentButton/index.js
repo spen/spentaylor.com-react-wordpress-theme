@@ -8,14 +8,14 @@ import DownIcon from 'react-icons/lib/fa/angle-down';
 
 export class ShowContentButton extends Component {
 	render() {
-		const { className, previousContentPath } = this.props;
+		const { className, currentContentPath } = this.props;
 
-		if ( ! previousContentPath ) {
+		if ( ! currentContentPath ) {
 			return null;
 		}
 
 		return (
-			<Link className={ className } to={ previousContentPath }>
+			<Link className={ className } to={ currentContentPath }>
 				<DownIcon height="100%" />
 			</Link>
 		);
@@ -23,10 +23,10 @@ export class ShowContentButton extends Component {
 }
 
 function mapStateToProps( state ) {
-	const previousContentPath = state.routing.previousContentPath;
+	const currentContentPath = state.routing.currentContentPath;
 
 	return {
-		previousContentPath,
+		currentContentPath,
 	};
 }
 

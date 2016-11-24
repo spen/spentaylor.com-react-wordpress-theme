@@ -36,7 +36,7 @@ ReactDOM.render(
 		<Router history={ history }>
 			<Route path="/" component={ App }>
 				<Route path="/about" component={ AboutPage } />
-				<Route path="/blog" component={ BlogPage } />
+				<Route path="/blog(/:slug)" component={ BlogPage } />
 				<Route path="/contact" component={ ContactPage } />
 				<Route path="/projects" component={ ProjectsPage } />
 				<Route path="*" />
