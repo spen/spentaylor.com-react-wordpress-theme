@@ -2,21 +2,41 @@
  * External Dependencies
  */
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import LeftIcon from 'react-icons/lib/fa/angle-left';
 import { Link } from 'react-router';
 
-export default class extends Component {
-	render() {
-		const { className, showContent } = this.props;
+/**
+ * Internal Dependencies
+ */
+import { getPreviousPostSlug } from 'state/blog/selectors';
 
-		if ( ! showContent ) {
+export class PreviousButton extends Component {
+	render() {
+		const { className, showContent, targetPostSlug } = this.props;
+
+		if ( ! showContent || ! targetPostSlug ) {
 			return null;
 		}
 
 		return (
-			<Link className={ className } to={ 'nowhere' }>
+			<Link
+				to={ `/blog/${ targetPostSlug }` }
+				className={ className }
+				style={ { left: '0', position: 'absolute' } }
+			>
 				<LeftIcon height="100%" />
 			</Link>
 		);
 	}
 }
+
+function mapStateToProps( state ) {
+	const targetPostSlug = getPreviousPostSlug( state );
+
+	return {
+		targetPostSlug,
+	};
+}
+
+export default connect( mapStateToProps )( PreviousButton );

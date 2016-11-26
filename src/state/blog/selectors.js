@@ -1,7 +1,7 @@
 /**
  * External Dependencies
  */
-import { find, get } from 'lodash';
+import { indexOf, find, get } from 'lodash';
 
 export function getPosts( state ) {
 	return get( state, 'blog.list' );
@@ -29,6 +29,38 @@ export function getPostById( state, id ) {
 
 export function getActivePostSlug( state ) {
 	return get( state, 'blog.activePostSlug' );
+}
+
+export function getNextPostSlug( state ) {
+	const posts = getPosts( state );
+	const activePostSlug = getActivePostSlug( state );
+	const activePost = getPostBySlug( state, activePostSlug );
+
+	const postIndex = indexOf( posts, activePost );
+
+	if ( ! postIndex || ! activePost ) {
+		return null;
+	}
+
+	const targetIndex = postIndex + 1;
+
+	return targetIndex <= posts.length - 1 ? posts[ targetIndex ].slug : null;
+}
+
+export function getPreviousPostSlug( state ) {
+	const posts = getPosts( state );
+	const activePostSlug = getActivePostSlug( state );
+	const activePost = getPostBySlug( state, activePostSlug );
+
+	const postIndex = indexOf( posts, activePost );
+
+	if ( ! postIndex || ! activePost ) {
+		return null;
+	}
+
+	const targetIndex = postIndex - 1;
+
+	return targetIndex >= 0 ? posts[ targetIndex ].slug : null;
 }
 
 export function getActivePost( state ) {
