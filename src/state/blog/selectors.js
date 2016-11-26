@@ -27,21 +27,17 @@ export function getPostById( state, id ) {
 	return find( posts, { ID: id } );
 }
 
-export function getCurrentPostId( state ) {
-	return get( state, 'blog.currentId' );
+export function getActivePostSlug( state ) {
+	return get( state, 'blog.activePostSlug' );
 }
 
-export function getCurrentPostSlug( state ) {
-	return get( state, 'blog.currentPostSlug' );
-}
-
-export function getCurrentPost( state ) {
+export function getActivePost( state ) {
 	const posts = getPosts( state );
-	const currentPostSlug = getCurrentPostSlug( state );
+	const activePostSlug = getActivePostSlug( state );
 
-	if ( ! posts || ! currentPostSlug ) {
+	if ( ! posts || ! activePostSlug ) {
 		return null;
 	}
 
-	return getPostBySlug( state, currentPostSlug );
+	return getPostBySlug( state, activePostSlug );
 }

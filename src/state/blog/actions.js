@@ -4,8 +4,8 @@
 import {
 	BLOG_POSTS_FETCH,
 	BLOG_POSTS_RECEIVE,
-	BLOG_SET_CURRENT_SLUG,
-	BLOG_SET_DEFAULT_SLUG,
+	BLOG_SET_ACTIVE_POST,
+	BLOG_SET_ACTIVE_POST_SLUG,
 } from 'state/action-types';
 
 export function fetchPosts() {
@@ -21,16 +21,16 @@ export function recievePosts( payload ) {
 	};
 }
 
-export function setCurrentSlug( slug ) {
+export function setActivePost( slug ) {
 	return {
-		type: BLOG_SET_CURRENT_SLUG,
+		type: BLOG_SET_ACTIVE_POST,
 		slug,
 	};
 }
 
-export function setDefaultSlug( posts ) {
+export function setActivePostSlug( slug ) {
 	return {
-		type: BLOG_SET_DEFAULT_SLUG,
-		posts,
+		type: BLOG_SET_ACTIVE_POST_SLUG,
+		slug,
 	};
 }

@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
  * Internal Dependencies
  */
 import Paper from 'components/Paper';
-import { getCurrentPost } from 'state/blog/selectors';
+import { getActivePost } from 'state/blog/selectors';
 
 function getContentHtml( content ) {
 	// TODO: Explore html sanitizers to set this safely.
@@ -40,7 +40,7 @@ export class CurrentPost extends Component {
 }
 
 function mapStateToProps( state ) {
-	const currentPost = getCurrentPost( state );
+	const currentPost = getActivePost( state );
 
 	return {
 		currentPost,
