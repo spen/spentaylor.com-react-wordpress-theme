@@ -20,6 +20,8 @@ import App from 'containers/App';
 
 import AboutPage from 'containers/AboutPage';
 import BlogPage from 'containers/BlogPage';
+import ActivePost from 'containers/BlogPage/ActivePost';
+
 import ContactPage from 'containers/ContactPage';
 import ProjectsPage from 'containers/ProjectsPage';
 import configureStore from './store';
@@ -36,7 +38,9 @@ ReactDOM.render(
 		<Router history={ history }>
 			<Route path="/" component={ App }>
 				<Route path="/about" component={ AboutPage } />
-				<Route path="/blog(/:slug)" component={ BlogPage } />
+				<Route path="/blog" component={ BlogPage } >
+					<Route path="/blog/:slug" component={ ActivePost } />
+				</Route>
 				<Route path="/contact" component={ ContactPage } />
 				<Route path="/projects" component={ ProjectsPage } />
 				<Route path="*" />
