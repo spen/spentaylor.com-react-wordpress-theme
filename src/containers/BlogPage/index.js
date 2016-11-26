@@ -11,7 +11,7 @@ import { connect } from 'react-redux';
  */
 import { setActivePost } from 'state/blog/actions';
 import { getPostBySlug } from 'state/blog/selectors';
-import CurrentPost from './CurrentPost';
+import ActivePost from './ActivePost';
 
 export class BlogPage extends Component {
 
@@ -25,7 +25,7 @@ export class BlogPage extends Component {
 
 		return (
 			<div>
-				{ !! routedPost && <CurrentPost /> }
+				{ !! routedPost && <ActivePost /> }
 			</div>
 		);
 	}
