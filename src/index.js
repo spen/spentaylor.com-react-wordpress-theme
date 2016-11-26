@@ -8,7 +8,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { browserHistory, Route, Router } from 'react-router';
+import { browserHistory, IndexRoute, Route, Router } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import 'normalize.css';
@@ -31,6 +31,19 @@ import 'assets/temp-styles.css';
 const store = configureStore( {}, browserHistory );
 const history = syncHistoryWithStore( browserHistory, store );
 
+function onBlogRootEnter() {
+	store.dispatch( {
+		type: 'BLOG_SET_DEFAULT_POST',
+	} );
+}
+
+function onBlogPostEnter( routeData ) {
+	store.dispatch( {
+		type: 'BLOG_SET_ACTIVE_POST',
+		slug: routeData.params.slug,
+	} );
+}
+
 const rootElement = document.getElementById( 'root' );
 
 ReactDOM.render(
@@ -39,7 +52,12 @@ ReactDOM.render(
 			<Route path="/" component={ App }>
 				<Route path="/about" component={ AboutPage } />
 				<Route path="/blog" component={ BlogPage } >
-					<Route path="/blog/:slug" component={ ActivePost } />
+					<IndexRoute component={ ActivePost } onEnter={ onBlogRootEnter } />
+					<Route
+						path="/blog/:slug"
+						component={ ActivePost }
+						onEnter={ onBlogPostEnter }
+					/>
 				</Route>
 				<Route path="/contact" component={ ContactPage } />
 				<Route path="/projects" component={ ProjectsPage } />

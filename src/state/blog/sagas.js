@@ -32,44 +32,54 @@ export function* fetchPosts() {
 
 export function* setActivePost( action ) {
 	const { slug } = action;
-	let posts = yield select( getPosts );
+	const posts = yield select( getPosts );
 
-	// ensure posts are fetched
+	// TODO: handle cases where there are still no posts, this assumes
+	// that fetching posts always successfully returns a number of posts.
 	if ( isEmpty( posts ) ) {
 		yield call( fetchPosts );
 	}
 
-	posts = yield select( getPosts );
+	const matchedPost = yield select( getPostBySlug, slug );
+
+	if ( matchedPost ) {
+		yield put( setActivePostSlug( matchedPost.slug ) );
+	} else {
+		// TODO: handle no match - ui should show some error
+		// yield put( setActivePostSlug( match.slug ) );
+	}
+}
+
+export function* setDefaultPost( ) {
+	let posts = yield select( getPosts );
 
 	// TODO: handle cases where there are still no posts, this assumes
 	// that fetching posts always successfully returns a number of posts.
-
-	if ( ! slug ) {
-		const activePostSlug = yield select( getActivePostSlug );
-		let targetSlug;
-
-		if ( activePostSlug ) {
-			targetSlug = activePostSlug;
-		} else {
-			const firstPost = yield call( first, posts );
-			targetSlug = firstPost.slug;
-		}
-		const url = `/blog/${ targetSlug }`;
-
-		yield put( push( url ) );
-	} else {
-		const matchedPost = yield select( getPostBySlug, slug );
-		if ( matchedPost ) {
-			yield put( setActivePostSlug( matchedPost.slug ) );
-		} else {
-			// TODO: handle no match - ui should show some error
-			// yield put( setActivePostSlug( match.slug ) );
-		}
+	if ( isEmpty( posts ) ) {
+		yield call( fetchPosts );
 	}
+
+	const activePostSlug = yield select( getActivePostSlug );
+	let targetSlug;
+
+	if ( activePostSlug ) {
+		targetSlug = activePostSlug;
+	} else {
+		posts = yield select( getPosts );
+		const firstPost = yield call( first, posts );
+		targetSlug = firstPost.slug;
+	}
+	const url = `/blog/${ targetSlug }`;
+
+	yield put( push( url ) );
 }
 
 export function* setActivePostWatcher() {
 	yield takeEvery( BLOG_SET_ACTIVE_POST, setActivePost );
+}
+
+export function* setDefaultPostWatcher() {
+	yield takeEvery( 'BLOG_SET_DEFAULT_POST', setDefaultPost );
 }
 
 export function* fetchPostsWatcher() {
@@ -81,4 +91,5 @@ export function* fetchPostsWatcher() {
 export default [
 	fetchPostsWatcher,
 	setActivePostWatcher,
+	setDefaultPostWatcher,
 ];
