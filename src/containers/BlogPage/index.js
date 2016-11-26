@@ -10,8 +10,6 @@ import { connect } from 'react-redux';
  * Internal Dependencies
  */
 import { setActivePost } from 'state/blog/actions';
-import { getPostBySlug } from 'state/blog/selectors';
-import ActivePost from './ActivePost';
 
 export class BlogPage extends Component {
 
@@ -21,23 +19,12 @@ export class BlogPage extends Component {
 	}
 
 	render() {
-		const { routedPost } = this.props;
-
 		return (
 			<div>
-				{ !! routedPost && <ActivePost /> }
+				{ this.props.children }
 			</div>
 		);
 	}
-}
-
-function mapStateToProps( state, props ) {
-	// get post by the url slug.
-	const routedPost = getPostBySlug( state, props.params.slug );
-
-	return {
-		routedPost,
-	};
 }
 
 function mapDispatchToProps( dispatch ) {
@@ -48,4 +35,4 @@ function mapDispatchToProps( dispatch ) {
 	};
 }
 
-export default connect( mapStateToProps, mapDispatchToProps )( BlogPage );
+export default connect( null, mapDispatchToProps )( BlogPage );
