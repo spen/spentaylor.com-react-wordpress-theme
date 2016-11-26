@@ -19,20 +19,20 @@ function getContentHtml( content ) {
 	};
 }
 
-export class CurrentPost extends Component {
+export class ActivePost extends Component {
 
 	render() {
-		const { currentPost } = this.props;
+		const { activePost } = this.props;
 
-		if ( ! currentPost ) {
+		if ( ! activePost ) {
 			return <p> loading... </p>;
 		}
 
 		return (
 			<div>
-				<h2>Current: { currentPost.title }</h2>
+				<h2>Active: { activePost.title }</h2>
 				<Paper>
-					<div dangerouslySetInnerHTML={ getContentHtml( currentPost.content ) }></div>
+					<div dangerouslySetInnerHTML={ getContentHtml( activePost.content ) }></div>
 				</Paper>
 			</div>
 		);
@@ -40,11 +40,11 @@ export class CurrentPost extends Component {
 }
 
 function mapStateToProps( state ) {
-	const currentPost = getActivePost( state );
+	const activePost = getActivePost( state );
 
 	return {
-		currentPost,
+		activePost,
 	};
 }
 
-export default connect( mapStateToProps )( CurrentPost );
+export default connect( mapStateToProps )( ActivePost );
