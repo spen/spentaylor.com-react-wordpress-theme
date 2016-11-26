@@ -4,14 +4,14 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
+import { each } from 'lodash';
 
 /**
  * Internal Dependencies
  */
 import createReducer from './reducers';
-
-import { fetchPostsWatcher, setActivePostWatcher } from 'state/blog/sagas';
-import { getProjectsWatcher } from 'state/projects/sagas';
+import blogSagas from 'state/blog/sagas';
+import projectsSagas from 'state/projects/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -31,9 +31,13 @@ export default function( initialState = {}, history ) {
 	// Extensions
 	store.runSaga = sagaMiddleware.run;
 
-	sagaMiddleware.run( fetchPostsWatcher );
-	sagaMiddleware.run( setActivePostWatcher );
-	sagaMiddleware.run( getProjectsWatcher );
+	each( blogSagas, saga => {
+		sagaMiddleware.run( saga );
+	} );
+
+	each( projectsSagas, saga => {
+		sagaMiddleware.run( saga );
+	} );
 
 	// Make reducers hot reloadable, see http://mxs.is/googmo
 	if ( module.hot ) {

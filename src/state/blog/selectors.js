@@ -38,7 +38,7 @@ export function getNextPostSlug( state ) {
 
 	const postIndex = indexOf( posts, activePost );
 
-	if ( ! postIndex || ! activePost ) {
+	if ( postIndex < 0 || ! activePost ) {
 		return null;
 	}
 
