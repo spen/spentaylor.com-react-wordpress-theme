@@ -1,15 +1,9 @@
 /**
  * Internal Dependencies
  */
-import { first } from 'lodash';
-
-/**
- * Internal Dependencies
- */
 import {
 	BLOG_POSTS_RECEIVE,
-	BLOG_SET_CURRENT_SLUG,
-	BLOG_SET_DEFAULT_SLUG,
+	BLOG_SET_ACTIVE_POST_SLUG,
 } from 'state/action-types';
 import initialState from './initialState';
 
@@ -24,23 +18,11 @@ export default function( state = initialState, action ) {
 				total: found,
 			};
 		}
-		case BLOG_SET_CURRENT_SLUG:
+		case BLOG_SET_ACTIVE_POST_SLUG:
 			return {
 				...state,
-				currentPostSlug: action.slug,
+				activePostSlug: action.slug,
 			};
-		case BLOG_SET_DEFAULT_SLUG: {
-			const posts = action.posts;
-			const post = posts && posts.length
-				? first( posts )
-				: null;
-			const slug = post ? post.slug : null;
-
-			return {
-				...state,
-				currentPostSlug: slug,
-			};
-		}
 		default:
 			return state;
 	}

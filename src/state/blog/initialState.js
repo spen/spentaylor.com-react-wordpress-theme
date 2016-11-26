@@ -1,7 +1,7 @@
 const initialState = {
 	list: [],
 	total: 0,
-	currentPostSlug: null,
+	activePostSlug: null,
 };
 
 export default initialState;

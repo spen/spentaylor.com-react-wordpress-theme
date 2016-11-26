@@ -1,17 +1,24 @@
 /**
  * External Dependencies
  */
-import { call, put, take } from 'redux-saga/effects';
+import { first, isEmpty } from 'lodash';
+import { push } from 'react-router-redux';
+import { call, put, select, take } from 'redux-saga/effects';
+import { takeEvery } from 'redux-saga';
 
 /**
  * Internal Dependencies
  */
-import { recievePosts } from './actions';
 import { SITE_URL } from 'constants/wp';
-import { BLOG_POSTS_FETCH } from 'state/action-types';
+import {
+	BLOG_POSTS_FETCH,
+	BLOG_SET_ACTIVE_POST,
+} from 'state/action-types';
 import request from 'utils/request';
+import { recievePosts, setActivePostSlug } from './actions';
+import { getPosts, getPostBySlug, getActivePostSlug } from './selectors';
 
-export function* getPosts() {
+export function* fetchPosts() {
 	const requestURL = 'http://public-api.wordpress.com/rest/v1.1/sites/' +
 		SITE_URL + '/posts?callback=?';
 	const response = yield call( request, requestURL );
@@ -23,12 +30,55 @@ export function* getPosts() {
 	}
 }
 
-export function* getPostsWatcher() {
+export function* setActivePost( action ) {
+	const { slug } = action;
+	let posts = yield select( getPosts );
+
+	// ensure posts are fetched
+	if ( isEmpty( posts ) ) {
+		yield call( fetchPosts );
+	}
+
+	posts = yield select( getPosts );
+
+	// TODO: handle cases where there are still no posts, this assumes
+	// that fetching posts always successfully returns a number of posts.
+
+	if ( ! slug ) {
+		const activePostSlug = yield select( getActivePostSlug );
+		let targetSlug;
+
+		if ( activePostSlug ) {
+			targetSlug = activePostSlug;
+		} else {
+			const firstPost = yield call( first, posts );
+			targetSlug = firstPost.slug;
+		}
+		const url = `/blog/${ targetSlug }`;
+
+		yield put( push( url ) );
+	} else {
+		const matchedPost = yield select( getPostBySlug, slug );
+		if ( matchedPost ) {
+			yield put( setActivePostSlug( matchedPost.slug ) );
+		} else {
+			// TODO: handle no match - ui should show some error
+			// yield put( setActivePostSlug( match.slug ) );
+		}
+	}
+}
+
+export function* setActivePostWatcher() {
+	yield takeEvery( BLOG_SET_ACTIVE_POST, setActivePost );
+}
+
+export function* fetchPostsWatcher() {
 	while ( yield take( BLOG_POSTS_FETCH ) ) {
-		yield call( getPosts );
+		yield call( fetchPosts );
 	}
 }
 
 export default [
-	getPostsWatcher,
+	fetchPostsWatcher,
+	setActivePostWatcher,
 ];
