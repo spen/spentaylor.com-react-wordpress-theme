@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
  * Internal Dependencies
  */
 import Paper from 'components/Paper';
+import SkeletonPost from 'components/SkeletonPost';
 import { getActivePost } from 'state/blog/selectors';
 
 function getContentHtml( content ) {
@@ -20,12 +21,22 @@ function getContentHtml( content ) {
 }
 
 export class ActivePost extends Component {
-
 	render() {
 		const { activePost, style = {} } = this.props;
 
 		if ( ! activePost ) {
-			return <p> loading... </p>;
+			return (
+				<div
+					style={ {
+						...style,
+						position: 'absolute',
+						width: '100%',
+					} }
+				>
+					<h2>Loading...</h2>
+					<SkeletonPost />
+				</div>
+			);
 		}
 
 		return (
@@ -36,7 +47,7 @@ export class ActivePost extends Component {
 					width: '100%',
 				} }
 			>
-				<h2>Active: { activePost.title }</h2>
+				<h2>{ activePost.title }</h2>
 				<Paper>
 					<div dangerouslySetInnerHTML={ getContentHtml( activePost.content ) }></div>
 				</Paper>
