@@ -73,3 +73,7 @@ export function getActivePost( state ) {
 
 	return getPostBySlug( state, activePostSlug );
 }
+
+export function getPostsError( state ) {
+	return get( state, 'blog.postsError' );
+}
