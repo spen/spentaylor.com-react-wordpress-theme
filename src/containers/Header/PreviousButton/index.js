@@ -21,7 +21,10 @@ export class PreviousButton extends Component {
 
 		return (
 			<Link
-				to={ `/blog/${ targetPostSlug }` }
+				to={ {
+					pathname: `/blog/${ targetPostSlug }`,
+					state: { direction: 'previous' },
+				} }
 				className={ className }
 				style={ { left: '0', position: 'absolute' } }
 			>
