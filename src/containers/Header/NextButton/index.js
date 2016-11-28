@@ -21,7 +21,10 @@ export class NextButton extends Component {
 
 		return (
 			<Link
-				to={ `/blog/${ targetPostSlug }` }
+				to={ {
+					pathname: `/blog/${ targetPostSlug }`,
+					state: { direction: 'next' },
+				} }
 				className={ className }
 				style={ { right: '0', position: 'absolute' } }
 			>
