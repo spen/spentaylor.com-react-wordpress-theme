@@ -26,10 +26,11 @@ import {
 	setPostsError,
 } from './actions';
 import {
-	getPosts,
-	getPostBySlug,
 	getActivePostSlug,
 	getNextPostSlug,
+	getPostBySlug,
+	getPosts,
+	getPostsError,
 	getPreviousPostSlug,
 } from './selectors';
 
@@ -41,7 +42,7 @@ export function* fetchPosts() {
 	if ( ! response.err ) {
 		yield put( recievePosts( response ) );
 	} else {
-		// TODO: 'put' failed action
+		yield put( setPostsError( 'Something went wrong while connecting to wordpress :(' ) );
 	}
 }
 
@@ -49,16 +50,23 @@ export function* setActivePost( action ) {
 	const { slug } = action;
 	const posts = yield select( getPosts );
 
+	yield put( clearPostsError() );
+
 	// TODO: handle cases where there are still no posts, this assumes
 	// that fetching posts always successfully returns a number of posts.
 	if ( isEmpty( posts ) ) {
 		yield call( fetchPosts );
 	}
 
+	const error = yield select( getPostsError );
+
+	if ( ! isEmpty( error ) ) {
+		return;
+	}
+
 	const matchedPost = yield select( getPostBySlug, slug );
 
 	if ( matchedPost ) {
-		yield put( clearPostsError() );
 		yield put( setActivePostSlug( matchedPost.slug ) );
 		const nextPostSlug = yield select( getNextPostSlug );
 		const previousPostSlug = yield select( getPreviousPostSlug );
@@ -69,8 +77,6 @@ export function* setActivePost( action ) {
 	} else {
 		yield put( setPostsError( `Oh no! No post found matching: "${ slug }". :(` ) );
 		yield put( setActivePostSlug( null ) );
-		// TODO: handle no match - ui should show some error
-		// yield put( setActivePostSlug( match.slug ) );
 	}
 }
 
@@ -81,6 +87,12 @@ export function* setDefaultPost( ) {
 	// that fetching posts always successfully returns a number of posts.
 	if ( isEmpty( posts ) ) {
 		yield call( fetchPosts );
+	}
+
+	const error = yield select( getPostsError );
+
+	if ( ! isEmpty( error ) ) {
+		return;
 	}
 
 	const activePostSlug = yield select( getActivePostSlug );
