@@ -22,14 +22,20 @@ function getContentHtml( content ) {
 export class ActivePost extends Component {
 
 	render() {
-		const { activePost } = this.props;
+		const { activePost, style = {} } = this.props;
 
 		if ( ! activePost ) {
 			return <p> loading... </p>;
 		}
 
 		return (
-			<div>
+			<div
+				style={ {
+					...style,
+					position: 'absolute',
+					width: '100%',
+				} }
+			>
 				<h2>Active: { activePost.title }</h2>
 				<Paper>
 					<div dangerouslySetInnerHTML={ getContentHtml( activePost.content ) }></div>
