@@ -15,8 +15,18 @@ import {
 	BLOG_SET_ACTIVE_POST,
 } from 'state/action-types';
 import request from 'utils/request';
+import {
+	setNextContentPath,
+	setPreviousContentPath,
+} from 'state/routing/actions';
 import { recievePosts, setActivePostSlug } from './actions';
-import { getPosts, getPostBySlug, getActivePostSlug } from './selectors';
+import {
+	getPosts,
+	getPostBySlug,
+	getActivePostSlug,
+	getNextPostSlug,
+	getPreviousPostSlug,
+} from './selectors';
 
 export function* fetchPosts() {
 	const requestURL = 'http://public-api.wordpress.com/rest/v1.1/sites/' +
@@ -44,6 +54,12 @@ export function* setActivePost( action ) {
 
 	if ( matchedPost ) {
 		yield put( setActivePostSlug( matchedPost.slug ) );
+		const nextPostSlug = yield select( getNextPostSlug );
+		const previousPostSlug = yield select( getPreviousPostSlug );
+		const nextPath = nextPostSlug ? `/blog/${ nextPostSlug }` : null;
+		const previousPath = previousPostSlug ? `/blog/${ previousPostSlug }` : null;
+		yield put( setNextContentPath( nextPath ) );
+		yield put( setPreviousContentPath( previousPath ) );
 	} else {
 		// TODO: handle no match - ui should show some error
 		// yield put( setActivePostSlug( match.slug ) );
