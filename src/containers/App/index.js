@@ -8,6 +8,7 @@ import React, { Component } from 'react';
  */
 import Header from 'containers/Header';
 import Intro from 'containers/Intro';
+import ContentArea from 'components/ContentArea';
 
 import PageWrap from './styles/App';
 
@@ -20,7 +21,9 @@ export default class App extends Component {
 			<PageWrap open={ showContent }>
 				<Intro />
 				<Header showContent={ showContent } />
-				{ children }
+				<ContentArea>
+					{ children }
+				</ContentArea>
 			</PageWrap>
 		);
 	}
