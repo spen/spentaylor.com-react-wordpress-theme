@@ -66,7 +66,10 @@ export class ActivePost extends Component {
 			>
 				<h2>{ activePost.title }</h2>
 				<Paper>
-					<div dangerouslySetInnerHTML={ getContentHtml( activePost.content ) }></div>
+					<div
+						style={ { padding: '10px 30px' } }
+						dangerouslySetInnerHTML={ getContentHtml( activePost.content ) }
+					/>
 				</Paper>
 			</div>
 		);
