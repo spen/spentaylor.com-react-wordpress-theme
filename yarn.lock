@@ -2937,6 +2937,10 @@ pbkdf2@^3.0.3:
   dependencies:
     create-hmac "^1.1.2"
 
+performance-now@^0.2.0, performance-now@~0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/performance-now/-/performance-now-0.2.0.tgz#33ef30c5c77d4ea21c5a53869d91b56d8f2555e5"
+
 pify@^2.0.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-2.3.0.tgz#ed141a6ac043a849ea588498e7dca8b15330e90c"
@@ -3312,6 +3316,12 @@ querystringify@0.0.x:
   version "0.0.4"
   resolved "https://registry.yarnpkg.com/querystringify/-/querystringify-0.0.4.tgz#0cf7f84f9463ff0ae51c4c4b142d95be37724d9c"
 
+raf@^3.1.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/raf/-/raf-3.3.0.tgz#93845eeffc773f8129039f677f80a36044eee2c3"
+  dependencies:
+    performance-now "~0.2.0"
+
 randomatic@^1.1.3:
   version "1.1.5"
   resolved "https://registry.yarnpkg.com/randomatic/-/randomatic-1.1.5.tgz#5e9ef5f2d573c67bd2b8124ae90b5156e457840b"
@@ -3361,6 +3371,13 @@ react-icons@^2.2.1:
   dependencies:
     react-icon-base "2.0.3"
 
+react-motion@^0.4.2, react-motion@^0.4.5:
+  version "0.4.5"
+  resolved "https://registry.yarnpkg.com/react-motion/-/react-motion-0.4.5.tgz#ecc42f692fec9b2de4c92f85e26375071f779b76"
+  dependencies:
+    performance-now "^0.2.0"
+    raf "^3.1.0"
+
 react-redux@^4.4.6:
   version "4.4.6"
   resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-4.4.6.tgz#4b9d32985307a11096a2dd61561980044fcc6209"
@@ -3373,6 +3390,12 @@ react-redux@^4.4.6:
 react-router-redux@^4.0.7:
   version "4.0.7"
   resolved "https://registry.yarnpkg.com/react-router-redux/-/react-router-redux-4.0.7.tgz#9b1fde4e70106c50f47214e12bdd888cfb96e2a6"
+
+react-router-transition@^0.0.6:
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/react-router-transition/-/react-router-transition-0.0.6.tgz#5da212f1c028e79534452bd2a8cf6bf02fc81963"
+  dependencies:
+    react-motion "^0.4.2"
 
 react-router@2.0.0-rc1:
   version "2.0.0-rc1"
