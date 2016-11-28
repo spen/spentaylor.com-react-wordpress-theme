@@ -9,20 +9,20 @@ import { Link } from 'react-router';
 /**
  * Internal Dependencies
  */
-import { getPreviousPostSlug } from 'state/blog/selectors';
+import { getPreviousContentPath } from 'state/routing/selectors';
 
 export class PreviousButton extends Component {
 	render() {
-		const { className, showContent, targetPostSlug } = this.props;
+		const { className, showContent, targetPath } = this.props;
 
-		if ( ! showContent || ! targetPostSlug ) {
+		if ( ! showContent || ! targetPath ) {
 			return null;
 		}
 
 		return (
 			<Link
 				to={ {
-					pathname: `/blog/${ targetPostSlug }`,
+					pathname: targetPath,
 					state: { direction: 'previous' },
 				} }
 				className={ className }
@@ -35,10 +35,10 @@ export class PreviousButton extends Component {
 }
 
 function mapStateToProps( state ) {
-	const targetPostSlug = getPreviousPostSlug( state );
+	const targetPath = getPreviousContentPath( state );
 
 	return {
-		targetPostSlug,
+		targetPath,
 	};
 }
 

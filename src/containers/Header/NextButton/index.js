@@ -9,20 +9,20 @@ import { Link } from 'react-router';
 /**
  * Internal Dependencies
  */
-import { getNextPostSlug } from 'state/blog/selectors';
+import { getNextContentPath } from 'state/routing/selectors';
 
 export class NextButton extends Component {
 	render() {
-		const { className, showContent, targetPostSlug } = this.props;
+		const { className, showContent, targetPath } = this.props;
 
-		if ( ! showContent || ! targetPostSlug ) {
+		if ( ! showContent || ! targetPath ) {
 			return null;
 		}
 
 		return (
 			<Link
 				to={ {
-					pathname: `/blog/${ targetPostSlug }`,
+					pathname: targetPath,
 					state: { direction: 'next' },
 				} }
 				className={ className }
@@ -35,10 +35,10 @@ export class NextButton extends Component {
 }
 
 function mapStateToProps( state ) {
-	const targetPostSlug = getNextPostSlug( state );
+	const targetPath = getNextContentPath( state );
 
 	return {
-		targetPostSlug,
+		targetPath,
 	};
 }
 
