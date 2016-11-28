@@ -19,7 +19,12 @@ import {
 	setNextContentPath,
 	setPreviousContentPath,
 } from 'state/routing/actions';
-import { recievePosts, setActivePostSlug } from './actions';
+import {
+	clearPostsError,
+	recievePosts,
+	setActivePostSlug,
+	setPostsError,
+} from './actions';
 import {
 	getPosts,
 	getPostBySlug,
@@ -53,6 +58,7 @@ export function* setActivePost( action ) {
 	const matchedPost = yield select( getPostBySlug, slug );
 
 	if ( matchedPost ) {
+		yield put( clearPostsError() );
 		yield put( setActivePostSlug( matchedPost.slug ) );
 		const nextPostSlug = yield select( getNextPostSlug );
 		const previousPostSlug = yield select( getPreviousPostSlug );
@@ -61,6 +67,8 @@ export function* setActivePost( action ) {
 		yield put( setNextContentPath( nextPath ) );
 		yield put( setPreviousContentPath( previousPath ) );
 	} else {
+		yield put( setPostsError( `Oh no! No post found matching: "${ slug }". :(` ) );
+		yield put( setActivePostSlug( null ) );
 		// TODO: handle no match - ui should show some error
 		// yield put( setActivePostSlug( match.slug ) );
 	}

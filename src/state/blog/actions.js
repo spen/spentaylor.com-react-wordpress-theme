@@ -2,6 +2,8 @@
  * Internal Dependencies
  */
 import {
+	BLOG_POSTS_ERROR_CLEAR,
+	BLOG_POSTS_ERROR_SET,
 	BLOG_POSTS_FETCH,
 	BLOG_POSTS_RECEIVE,
 	BLOG_SET_ACTIVE_POST,
@@ -32,5 +34,18 @@ export function setActivePostSlug( slug ) {
 	return {
 		type: BLOG_SET_ACTIVE_POST_SLUG,
 		slug,
+	};
+}
+
+export function setPostsError( message ) {
+	return {
+		type: BLOG_POSTS_ERROR_SET,
+		message,
+	};
+}
+
+export function clearPostsError() {
+	return {
+		type: BLOG_POSTS_ERROR_CLEAR,
 	};
 }
