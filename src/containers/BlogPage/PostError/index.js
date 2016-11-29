@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
  * Internal Dependencies
  */
 import Paper from 'components/Paper';
+import ErrorText from 'components/ErrorText';
 import { getPostsError } from 'state/blog/selectors';
 
 export class PostError extends Component {
@@ -18,11 +19,9 @@ export class PostError extends Component {
 				<h2>Oops!</h2>
 				<Paper>
 					<div style={ { padding: '10px 30px' } } >
-						<p>
-							<b style={ { color: '#d44' } }>
+						<ErrorText>
 							{ postsError && postsError.message }
-							</b>
-						</p>
+						</ErrorText>
 					</div>
 				</Paper>
 			</div>
