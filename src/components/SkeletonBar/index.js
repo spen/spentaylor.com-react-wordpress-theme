@@ -1,19 +1,15 @@
 /**
  * External Dependencies
  */
-import React from 'react';
+import styled, { css } from 'styled-components';
 
-export default function( { width = '40%', inline } ) {
-	return (
-		<p
-			style={ {
-				width,
-				height: '1em',
-				backgroundColor: '#ddd',
-				marginLeft: '1em',
-				marginBottom: 0,
-				display: inline ? 'inline-block' : 'block',
-			} }
-		/>
-	);
-}
+const skeletonBarStyles = css`
+	backgroundColor: #ddd;
+	display: ${ props => props.inline ? 'inline-block' : 'block' };
+	height: 1em;
+	marginLeft: 1em;
+	width: ${ props => props.width ? props.width : '40%' };
+	marginBottom: 0;
+`;
+
+export default styled.p`${ skeletonBarStyles }`;
