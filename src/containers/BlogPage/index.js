@@ -1,41 +1,21 @@
 /**
  * External Dependencies
  */
-import { get } from 'lodash';
 import React, { Component } from 'react';
-import { RouteTransition } from 'react-router-transition';
 
 /**
  * Internal Dependencies
  */
-import TransitionSlide from 'components/TransitionSlide';
-
-const mapStyles = styles => ( {
-	transform: `translateX(${ styles.translateX }%)`,
-	opacity: styles.opacity,
-} );
-
-const leftState = { opacity: 0, translateX: 30 };
-const rightState = { opacity: 0, translateX: -30 };
-const activeState = { opacity: 1, translateX: 0 };
+import PageTransition from 'components/PageTransition';
 
 export class BlogPage extends Component {
 	render() {
-		const { location, children } = this.props;
-		const direction = get( location, 'state.direction' );
+		const { children, location } = this.props;
 
 		return (
-			<RouteTransition
-				atEnter={ direction === 'previous' ? rightState : leftState }
-				atLeave={ direction === 'previous' ? leftState : rightState }
-				atActive={ activeState }
-				component={ TransitionSlide }
-				mapStyles={ mapStyles }
-				pathname={ location.pathname }
-				runOnMount={ false }
-			>
+			<PageTransition location={ location }>
 				{ children }
-			</RouteTransition>
+			</PageTransition>
 		);
 	}
 }
