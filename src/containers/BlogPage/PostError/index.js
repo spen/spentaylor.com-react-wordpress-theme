@@ -7,15 +7,16 @@ import { connect } from 'react-redux';
 /**
  * Internal Dependencies
  */
-import Paper from 'components/Paper';
+import ContentContainer from 'components/ContentContainer';
 import ErrorText from 'components/ErrorText';
+import Paper from 'components/Paper';
 import { getPostsError } from 'state/blog/selectors';
 
 export class PostError extends Component {
 	render() {
 		const { postsError } = this.props;
 		return (
-			<div>
+			<ContentContainer>
 				<h2>Oops!</h2>
 				<Paper>
 					<div style={ { padding: '10px 30px' } } >
@@ -24,7 +25,7 @@ export class PostError extends Component {
 						</ErrorText>
 					</div>
 				</Paper>
-			</div>
+			</ContentContainer>
 		);
 	}
 }

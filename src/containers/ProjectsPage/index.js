@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 /**
  * Internal Dependencies
  */
+import ContentContainer from 'components/ContentContainer';
 import { fetchProjects } from 'state/projects/actions';
 import CurrentProject from './CurrentProject';
 
@@ -18,9 +19,9 @@ export class ProjectsPage extends Component {
 
 	render() {
 		return (
-			<div>
+			<ContentContainer>
 				<CurrentProject />
-			</div>
+			</ContentContainer>
 		);
 	}
 }
