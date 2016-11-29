@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 /**
  * Internal Dependencies
  */
+import CopyBlock from 'components/CopyBlock';
 import Paper from 'components/Paper';
 import { getActivePost } from 'state/blog/selectors';
 
@@ -31,8 +32,7 @@ export class ActivePost extends Component {
 			<div>
 				<h2>{ activePost.title }</h2>
 				<Paper>
-					<div
-						style={ { padding: '10px 30px' } }
+					<CopyBlock
 						dangerouslySetInnerHTML={ getContentHtml( activePost.content ) }
 					/>
 				</Paper>
