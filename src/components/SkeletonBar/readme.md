@@ -1,7 +1,6 @@
 # Skeleton Bar
 
 A stylised `p` element used to build skeleton views to indicate that something is loading.
-It animates subtly in opacity.
 
 ## Usage
 
