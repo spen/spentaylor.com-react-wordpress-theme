@@ -20,7 +20,7 @@ import App from 'containers/App';
 
 import AboutPage from 'containers/AboutPage';
 import BlogPage from 'containers/BlogPage';
-import ActivePost from 'containers/BlogPage/ActivePost';
+import BlogPageContent from 'containers/BlogPage/Content';
 
 import ContactPage from 'containers/ContactPage';
 import ProjectsPage from 'containers/ProjectsPage';
@@ -60,10 +60,10 @@ ReactDOM.render(
 			<Route path="/" component={ App }>
 				<Route path="/about" component={ AboutPage } />
 				<Route path="/blog" component={ BlogPage } onLeave={ onBlogRootLeave } >
-					<IndexRoute component={ ActivePost } onEnter={ onBlogRootEnter } />
+					<IndexRoute component={ BlogPageContent } onEnter={ onBlogRootEnter } />
 					<Route
 						path="/blog/:slug"
-						component={ ActivePost }
+						component={ BlogPageContent }
 						onEnter={ onBlogPostEnter }
 					/>
 				</Route>
