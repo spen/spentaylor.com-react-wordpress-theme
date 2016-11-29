@@ -8,6 +8,7 @@ import { connect } from 'react-redux';
  * Internal Dependencies
  */
 import ContentContainer from 'components/ContentContainer';
+import CopyBlock from 'components/CopyBlock';
 import ErrorText from 'components/ErrorText';
 import Paper from 'components/Paper';
 import { getPostsError } from 'state/blog/selectors';
@@ -19,11 +20,11 @@ export class PostError extends Component {
 			<ContentContainer>
 				<h2>Oops!</h2>
 				<Paper>
-					<div style={ { padding: '10px 30px' } } >
+					<CopyBlock>
 						<ErrorText>
 							{ postsError && postsError.message }
 						</ErrorText>
-					</div>
+					</CopyBlock>
 				</Paper>
 			</ContentContainer>
 		);

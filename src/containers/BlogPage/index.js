@@ -5,6 +5,11 @@ import { get } from 'lodash';
 import React, { Component } from 'react';
 import { RouteTransition } from 'react-router-transition';
 
+/**
+ * Internal Dependencies
+ */
+import TransitionSlide from 'components/TransitionSlide';
+
 const mapStyles = styles => ( {
 	transform: `translateX(${ styles.translateX }%)`,
 	opacity: styles.opacity,
@@ -24,8 +29,7 @@ export class BlogPage extends Component {
 				atEnter={ direction === 'previous' ? rightState : leftState }
 				atLeave={ direction === 'previous' ? leftState : rightState }
 				atActive={ activeState }
-				className="RouteTransition"
-				component={ false }
+				component={ TransitionSlide }
 				mapStyles={ mapStyles }
 				pathname={ location.pathname }
 				runOnMount={ false }

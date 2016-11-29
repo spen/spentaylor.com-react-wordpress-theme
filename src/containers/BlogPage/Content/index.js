@@ -17,7 +17,7 @@ import SkeletonPost from '../SkeletonPost';
 
 export class BlogContent extends Component {
 
-	renderContent() {
+	render() {
 		const { activePost, postsError } = this.props;
 
 		if ( ! isEmpty( postsError ) ) {
@@ -31,21 +31,6 @@ export class BlogContent extends Component {
 		return <ActivePost />;
 	}
 
-	render() {
-		const { style = {} } = this.props;
-
-		return (
-			<div
-				style={ {
-					...style,
-					position: 'absolute',
-					width: '100%',
-				} }
-			>
-				{ this.renderContent() }
-			</div>
-		);
-	}
 }
 
 function mapStateToProps( state ) {
