@@ -8,7 +8,7 @@ import { RouteTransition } from 'react-router-transition';
 /**
  * Internal Dependencies
  */
-import TransitionSlide from 'components/TransitionSlide';
+import TransitionSlide from './TransitionSlide';
 
 const leftState = { opacity: 0, translateX: 30 };
 const rightState = { opacity: 0, translateX: -30 };
