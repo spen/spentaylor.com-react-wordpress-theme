@@ -19,7 +19,7 @@ export const buttonStyles = css`
 	backgroundColor: ${ propValue( 'mainColor', '#555' ) };
 	box-shadow: 0 4px 0 ${ propValue( 'shadowColor', '#333' ) };
 	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
-	height: ${ BUTTON_HEIGHT }px;
+	min-height: ${ BUTTON_HEIGHT }px;
 	line-height: ${ BUTTON_HEIGHT }px;
 	min-width: ${ BUTTON_HEIGHT }px;
 	text-align: center;
