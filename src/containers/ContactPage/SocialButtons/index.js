@@ -7,7 +7,7 @@ import React, { Component } from 'react';
  * Internal Dependencies
  */
 import socialNetworks from 'constants/socialNetworks';
-import Button from 'components/Button';
+import IconButton from 'components/IconButton';
 
 export default class extends Component {
 	render() {
@@ -15,7 +15,7 @@ export default class extends Component {
 			<div>
 				{ socialNetworks.map( socialNetwork => {
 					return (
-						<Button
+						<IconButton
 							href={ socialNetwork.url }
 							key={ socialNetwork.url }
 							openNew={ true }
@@ -23,6 +23,7 @@ export default class extends Component {
 							shadowColor={ socialNetwork.darkColor }
 							textColor={ socialNetwork.textColor }
 							label={ socialNetwork.title }
+							LeftIcon={ socialNetwork.icon }
 						/>
 					);
 				} ) }
