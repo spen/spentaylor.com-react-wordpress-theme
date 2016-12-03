@@ -12,20 +12,34 @@ import CopyBlock from 'components/CopyBlock';
 import Porthole from 'components/Porthole';
 import workExperiences from './data.json';
 
+import {
+	ProjectDates,
+	ProjectDetails,
+	ProjectInfo,
+	ProjectLogo,
+	ProjectRole,
+	ProjectTitle,
+} from './styles';
+
 export default class WorkExperience extends Component {
 	render() {
 		return (
 			<CopyBlock>
-				<h2>Work Experience</h2>
 				{ map( workExperiences, experience => {
-					const { description, image, jobTitle, projectTitle } = experience;
+					const { description, from, image, jobTitle, projectTitle, to } = experience;
+
 					return (
 						<div key={ projectTitle }>
-							<div>
-								<Porthole borderColor="#999" width="100px" image={ image } />
-								<h3>{ projectTitle }</h3>
-								<p>{ jobTitle }</p>
-							</div>
+							<ProjectInfo>
+								<ProjectLogo>
+									<Porthole borderColor="#999" width="100px" image={ image } />
+								</ProjectLogo>
+								<ProjectDetails>
+									<ProjectTitle>{ projectTitle }</ProjectTitle>
+									<ProjectRole>{ jobTitle }</ProjectRole>
+									<ProjectDates>{ from } - { to }</ProjectDates>
+								</ProjectDetails>
+							</ProjectInfo>
 							<ReactMarkdown source={ description } />
 						</div>
 					);
