@@ -1,0 +1,25 @@
+[
+	{
+		"image": "src/assets/images/experiences/burberry-logo.jpg",
+		"projectTitle": "Burberry",
+		"jobTitle": "Interactive Developer",
+		"description": "<p>At Burberry, I was responsible for working on both new and existing features of the company’s mobile ecommerce web app.<br/>Most notably the store stock lookup feature which originally involved choreographing multiple API endpoints in a way that allowed for smooth lazy loading.</p><p>Given the nature of the web app, mobile optimization was a key concern so techniques like lazy loading became quite important through out the work that we did.</p><p>Working at Burberry was a pleasure as there is a proper workflow in place, something I felt was missing from previous roles. This included unit testing, code reviews, proper coding standards and other agile methodologies.</p><p>Although there were strong standards with code style throughout the JS, CSS and templated HTML, I noticed that the unit tests had not had the same attention. In the last few months of my employment I set the ball rolling to standardize the testing style using best practices influenced by RSpec in a way that would encourage fuller test coverage throughout the projects.</p>",
+		"from": "June '15",
+		"to": "June '16"
+		
+	}, {
+		"image": "src/assets/images/experiences/bd-logo.png",
+		"projectTitle": "BD Network",
+		"jobTitle": "Web Developer",
+		"from": "Sept '14",
+		"to": "June '15",
+		"description": "<p>At BD Network I worked on a number of full-stack and front-end web projects.</p><p>Some of the clients that I worked with during my time at BD include: Nintendo, Coke-Cola, Whyte &amp; Mackay and Billington’s.</p><p>Having a relatively strong JS skill set I was often tasked with JS focused jobs including refactoring messy, unorganized JS in to modular, maintainable code.</p><p>Whilst building some of the front-ends for these projects I developed a small set of SCSS modules/mixins (including a solid, configurable grid system based loosely on Foundation) and implemented a workflow that utilized GruntJS to run tasks automatically - speeding up the process of building each project.</p>"
+	}, {
+		"image": "src/assets/images/experiences/ri-logo.jpg",
+		"projectTitle": "River Island",
+		"jobTitle": "Junior Front-end Developer",
+		"from": "June '15",
+		"to": "June '16",
+		"description": "<p>At River Island I was mostly tasked with general bug fixes and enhancements to the UI &amp; Implementing new features.</p><p> My most ambitious project at RI was a complete overhaul to our google-maps implementation, slimming and optimizing our API consumption while making the user's interactions much smoother.</p>"
+	}
+]
