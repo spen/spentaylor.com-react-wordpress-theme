@@ -10,8 +10,6 @@ import ReactMarkdown from 'react-markdown';
  */
 import CopyBlock from 'components/CopyBlock';
 import Porthole from 'components/Porthole';
-import workExperiences from './data.json';
-
 import {
 	ProjectDates,
 	ProjectDetails,
@@ -20,9 +18,11 @@ import {
 	ProjectRole,
 	ProjectTitle,
 } from './styles';
+import data from '../data.json';
 
 export default class WorkExperience extends Component {
 	render() {
+		const workExperiences = data.experience;
 		return (
 			<CopyBlock>
 				{ map( workExperiences, experience => {
