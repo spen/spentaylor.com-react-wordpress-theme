@@ -3,7 +3,7 @@
 /**
  * External Dependencies
  */
-import React, { Component } from 'react';
+import React from 'react';
 
 /**
  * Internal Dependencies
@@ -19,25 +19,19 @@ function getContentHtml( content ) {
 	};
 }
 
-export class Post extends Component {
-	render() {
-		const { post } = this.props;
-
-		if ( ! post ) {
-			return null;
-		}
-
-		return (
-			<ContentContainer>
-				<h2>{ post.title }</h2>
-				<Paper>
-					<CopyBlock
-						dangerouslySetInnerHTML={ getContentHtml( post.content ) }
-					/>
-				</Paper>
-			</ContentContainer>
-		);
+export default function( { post } ) {
+	if ( ! post ) {
+		return null;
 	}
-}
 
-export default Post;
+	return (
+		<ContentContainer>
+			<h2>{ post.title }</h2>
+			<Paper>
+				<CopyBlock
+					dangerouslySetInnerHTML={ getContentHtml( post.content ) }
+				/>
+			</Paper>
+		</ContentContainer>
+	);
+}
