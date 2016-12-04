@@ -1,6 +1,6 @@
 {
 	"blurb": "<h3>Hi, I'm Spen.</h3><p>I've always had a passion for <strong>digital experiences.</strong> At the age of 13 I started toying with making very crude <strong>animations &amp; games</strong> with Flash. Things have changed a lot since then but the <strong>underlying goal</strong> is still ultimately the same - To create things that are <strong>engaging &amp; entertaining.</strong></p><p>I've spent the past 3 ~ 4 years working with various web technologies with a strong focus on the ever expanding <strong>Javascript</strong> landscape.</p><p>Recently I've been laser focused on advancing my knowledge of <strong>React</strong> and the technologies surrounding it (<strong>Redux</strong>, <strong>ImmutableJS</strong> etc.).</p>",
-	"experience": [{
+	"experiences": [{
 		"image": "src/assets/images/experiences/burberry-logo.jpg",
 		"projectTitle": "Burberry",
 		"jobTitle": "Interactive Developer",

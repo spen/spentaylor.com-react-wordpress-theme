@@ -3,7 +3,7 @@
 /**
  * External Dependencies
  */
-import React from 'react';
+import React, { noscript } from 'react';
 
 /**
  * Internal Dependencies
@@ -19,9 +19,9 @@ function getContentHtml( content ) {
 	};
 }
 
-export default function( { post } ) {
+export default ( { post } ) => {
 	if ( ! post ) {
-		return null;
+		return <noscript />;
 	}
 
 	return (
@@ -34,4 +34,4 @@ export default function( { post } ) {
 			</Paper>
 		</ContentContainer>
 	);
-}
+};
