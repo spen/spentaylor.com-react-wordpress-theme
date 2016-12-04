@@ -4,7 +4,6 @@
  * External Dependencies
  */
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
 /**
  * Internal Dependencies
@@ -12,7 +11,6 @@ import { connect } from 'react-redux';
 import ContentContainer from 'components/ContentContainer';
 import CopyBlock from 'components/CopyBlock';
 import Paper from 'components/Paper';
-import { getActivePost } from 'state/blog/selectors';
 
 function getContentHtml( content ) {
 	// TODO: Explore html sanitizers to set this safely.
@@ -21,20 +19,20 @@ function getContentHtml( content ) {
 	};
 }
 
-export class ActivePost extends Component {
+export class Post extends Component {
 	render() {
-		const { activePost } = this.props;
+		const { post } = this.props;
 
-		if ( ! activePost ) {
+		if ( ! post ) {
 			return null;
 		}
 
 		return (
 			<ContentContainer>
-				<h2>{ activePost.title }</h2>
+				<h2>{ post.title }</h2>
 				<Paper>
 					<CopyBlock
-						dangerouslySetInnerHTML={ getContentHtml( activePost.content ) }
+						dangerouslySetInnerHTML={ getContentHtml( post.content ) }
 					/>
 				</Paper>
 			</ContentContainer>
@@ -42,12 +40,4 @@ export class ActivePost extends Component {
 	}
 }
 
-function mapStateToProps( state ) {
-	const activePost = getActivePost( state );
-
-	return {
-		activePost,
-	};
-}
-
-export default connect( mapStateToProps )( ActivePost );
+export default Post;
