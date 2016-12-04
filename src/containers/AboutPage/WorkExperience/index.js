@@ -2,7 +2,7 @@
  * External Dependencies
  */
 import { map } from 'lodash';
-import React, { Component } from 'react';
+import React from 'react';
 import ReactMarkdown from 'react-markdown';
 
 /**
@@ -18,33 +18,24 @@ import {
 	ProjectRole,
 	ProjectTitle,
 } from './styles';
-import data from '../data.json';
+import { experiences } from '../data.json';
 
-export default class WorkExperience extends Component {
-	render() {
-		const workExperiences = data.experience;
-		return (
-			<CopyBlock>
-				{ map( workExperiences, experience => {
-					const { description, from, image, jobTitle, projectTitle, to } = experience;
-
-					return (
-						<div key={ projectTitle }>
-							<ProjectInfo>
-								<ProjectLogo>
-									<Porthole borderColor="#999" width="100px" image={ image } />
-								</ProjectLogo>
-								<ProjectDetails>
-									<ProjectTitle>{ projectTitle }</ProjectTitle>
-									<ProjectRole>{ jobTitle }</ProjectRole>
-									<ProjectDates>{ from } - { to }</ProjectDates>
-								</ProjectDetails>
-							</ProjectInfo>
-							<ReactMarkdown source={ description } />
-						</div>
-					);
-				} ) }
-			</CopyBlock>
-		);
-	}
-}
+export default () => (
+	<CopyBlock>
+		{ map( experiences, ( { description, from, image, jobTitle, projectTitle, to } ) => (
+			<div key={ projectTitle }>
+				<ProjectInfo>
+					<ProjectLogo>
+						<Porthole borderColor="#999" width="100px" image={ image } />
+					</ProjectLogo>
+					<ProjectDetails>
+						<ProjectTitle>{ projectTitle }</ProjectTitle>
+						<ProjectRole>{ jobTitle }</ProjectRole>
+						<ProjectDates>{ from } - { to }</ProjectDates>
+					</ProjectDetails>
+				</ProjectInfo>
+				<ReactMarkdown source={ description } />
+			</div>
+		) ) }
+	</CopyBlock>
+);

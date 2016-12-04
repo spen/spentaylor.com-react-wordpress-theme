@@ -1,35 +1,30 @@
 /**
  * External Dependencies
  */
-import React, { Component } from 'react';
+import React, { noscript } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import DownIcon from 'react-icons/lib/fa/angle-down';
 
+/**
+ * Internal Dependencies
+ */
 import { getCurrentContentPath } from 'state/routing/selectors';
 
-export class ShowContentButton extends Component {
-	render() {
-		const { className, currentContentPath } = this.props;
-
-		if ( ! currentContentPath ) {
-			return null;
-		}
-
-		return (
-			<Link className={ className } to={ currentContentPath }>
-				<DownIcon height="100%" />
-			</Link>
-		);
+export const ShowContentButton = ( { className, currentContentPath } ) => {
+	if ( ! currentContentPath ) {
+		return <noscript />;
 	}
-}
 
-function mapStateToProps( state ) {
-	const currentContentPath = getCurrentContentPath( state );
+	return (
+		<Link className={ className } to={ currentContentPath }>
+			<DownIcon height="100%" />
+		</Link>
+	);
+};
 
-	return {
-		currentContentPath,
-	};
-}
-
-export default connect( mapStateToProps )( ShowContentButton );
+export default connect(
+	state => ( {
+		currentContentPath: getCurrentContentPath( state ),
+	} )
+)( ShowContentButton );
