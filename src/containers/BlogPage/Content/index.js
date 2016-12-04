@@ -10,35 +10,35 @@ import { connect } from 'react-redux';
 /**
  * Internal Dependencies
  */
-import { getActivePost, getPostsError } from 'state/blog/selectors';
-import ActivePost from '../ActivePost';
+import { getPostBySlug, getPostsError } from 'state/blog/selectors';
+import Post from '../Post';
 import PostError from '../PostError';
 import SkeletonPost from '../SkeletonPost';
 
 export class BlogContent extends Component {
 
 	render() {
-		const { activePost, postsError } = this.props;
+		const { post, postsError } = this.props;
 
 		if ( ! isEmpty( postsError ) ) {
 			return <PostError />;
 		}
 
-		if ( ! activePost ) {
+		if ( ! post ) {
 			return <SkeletonPost />;
 		}
 
-		return <ActivePost />;
+		return <Post post={ post } />;
 	}
 
 }
 
-function mapStateToProps( state ) {
-	const activePost = getActivePost( state );
+function mapStateToProps( state, props ) {
+	const post = getPostBySlug( state, props.params.slug );
 	const postsError = getPostsError( state );
 
 	return {
-		activePost,
+		post,
 		postsError,
 	};
 }
