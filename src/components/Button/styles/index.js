@@ -14,10 +14,29 @@ export const constants = {
 	BUTTON_HEIGHT,
 };
 
+const getBackgroundColor = ( { mainColor } ) => {
+	if ( mainColor ) {
+		return `
+			backgroundColor: ${ mainColor };
+		`;
+	}
+};
+
+const getBoxShadow = ( { shadowColor } ) => {
+	if ( shadowColor ) {
+		return `
+			box-shadow: 0 4px 0 ${ shadowColor };
+			&:active {
+				top: 3px;
+				box-shadow: 0 1px 0 ${ shadowColor };
+			}
+		`;
+	}
+};
+
 export const buttonStyles = css`
 	color: ${ propValue( 'textColor', '#fff' ) };
-	backgroundColor: ${ propValue( 'mainColor', '#555' ) };
-	box-shadow: 0 4px 0 ${ propValue( 'shadowColor', '#333' ) };
+	${ getBackgroundColor }
 	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 	min-height: ${ BUTTON_HEIGHT }px;
 	line-height: ${ BUTTON_HEIGHT }px;
@@ -32,10 +51,7 @@ export const buttonStyles = css`
 	align-items: center;
 	justify-content: center;
 
-	&:active {
-		top: 3px;
-		box-shadow: 0 1px 0 ${ propValue( 'shadowColor', '#333' ) };
-	}
+	${ getBoxShadow }
 `;
 
 export function buttonStyler( Button ) {
