@@ -8,10 +8,10 @@ import styled, { css } from 'styled-components';
  */
 import { propValue } from 'utils/styles';
 
-const BUTTON_HEIGHT = 50;
+const DEFAULT_HEIGHT = 50;
 
 export const constants = {
-	BUTTON_HEIGHT,
+	DEFAULT_HEIGHT,
 };
 
 const getBackgroundColor = ( { mainColor } ) => {
@@ -34,23 +34,32 @@ const getBoxShadow = ( { shadowColor } ) => {
 	}
 };
 
+const getHeight = ( { height } ) => {
+	return height
+		? `
+			height: ${ height };
+			line-height: ${ height }px;
+		`
+		: `
+			min-height: ${ DEFAULT_HEIGHT }px;
+			line-height: ${ DEFAULT_HEIGHT }px;
+		`;
+};
+
 export const buttonStyles = css`
 	color: ${ propValue( 'textColor', '#fff' ) };
 	${ getBackgroundColor }
 	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
-	min-height: ${ BUTTON_HEIGHT }px;
-	line-height: ${ BUTTON_HEIGHT }px;
-	min-width: ${ BUTTON_HEIGHT }px;
+	${ getHeight }
+	min-width: ${ DEFAULT_HEIGHT }px;
 	text-align: center;
 	position: relative;
 	display: inline-block;
 	cursor: pointer;
 	width: 100%;
-	margin: 8px auto;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-
 	${ getBoxShadow }
 `;
 
