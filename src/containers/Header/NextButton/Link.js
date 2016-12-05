@@ -22,6 +22,8 @@ export const NextButtonLink = ( { className, targetPath } ) => (
 		<IconButton
 			RightIcon={ RightIcon }
 			className={ className }
+			width="60px"
+			height="60px"
 		/>
 	</Link>
 );

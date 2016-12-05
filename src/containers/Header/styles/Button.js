@@ -4,8 +4,7 @@
 import styled, { css } from 'styled-components';
 
 export const buttonStyles = css`
-	color: ${ props => props.showContent ? 'white' : '#00c8b4' };
-	font-size: ${ props => props.showContent ? '1.5em' : '2em' };
+	font-size: 1.5em;
 	transition: color 0.5s ease, font-size 0.05s ease;
 	display: inline-block;
 	vertical-align: middle;
@@ -14,10 +13,11 @@ export const buttonStyles = css`
 	min-height: 60px;
 	line-height: 60px;
 	height: 60px;
-	margin: 0;
+	display: block;
+	margin: 0 auto;
 
 	&:hover {
-		font-size: ${ props => props.showContent ? '1.8em' : '2.8em' };
+		font-size: 1.8em;
 	}
 `;
 
