@@ -11,8 +11,8 @@ import DownIcon from 'react-icons/lib/fa/angle-down';
  */
 import { getCurrentContentPath } from 'state/routing/selectors';
 
-export const ShowContentButton = ( { className, currentContentPath } ) => {
-	if ( ! currentContentPath ) {
+export const ShowContentButton = ( { className, currentContentPath, showContent } ) => {
+	if ( ! currentContentPath || showContent ) {
 		return <noscript />;
 	}
 

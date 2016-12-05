@@ -1,34 +1,45 @@
 /**
  * External Dependencies
  */
-import React, { noscript } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import LeftIcon from 'react-icons/lib/fa/angle-left';
-import { Link } from 'react-router';
+import { Motion, spring } from 'react-motion';
 
 /**
  * Internal Dependencies
  */
 import { getPreviousContentPath } from 'state/routing/selectors';
+import Link from './Link';
 
-export const PreviousButton = ( { className, showContent, targetPath } ) => {
-	if ( ! showContent || ! targetPath ) {
-		return <noscript />;
+const showState = { left: spring( 0 ) };
+const hideState = { left: spring( -60 ) };
+
+export class PreviousButton extends Component {
+
+	shouldComponentUpdate( nextProps ) {
+		return !! nextProps.targetPath !== !! this.props.targetPath;
 	}
 
-	return (
-		<Link
-			to={ {
-				pathname: targetPath,
-				state: { direction: 'previous' },
-			} }
-			className={ className }
-			style={ { left: '0', position: 'absolute' } }
-		>
-			<LeftIcon height="100%" />
-		</Link>
-	);
-};
+	render() {
+		const show = !! this.props.targetPath;
+
+		return (
+			<Motion style={ show ? showState : hideState } >
+				{ ( { left } ) => (
+					<div
+						style={ {
+							position: 'absolute',
+							left: `${ left }px`,
+							top: 0,
+						} }
+					>
+						<Link { ...this.props } />
+					</div>
+				) }
+			</Motion>
+		);
+	}
+}
 
 export default connect(
 	state => ( {

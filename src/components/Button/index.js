@@ -8,7 +8,7 @@ import React from 'react';
  */
 import { buttonStyler } from './styles';
 
-export default function( { children, href, label, mainColor, openNew, shadowColor, textColor } ) {
+export default function( { children, href, label, openNew, ...props } ) {
 	const Button = buttonStyler( href ? 'a' : 'div' );
 	const linkProps = {
 		href,
@@ -22,9 +22,7 @@ export default function( { children, href, label, mainColor, openNew, shadowColo
 	return (
 		<Button
 			{ ...linkProps }
-			mainColor={ mainColor }
-			shadowColor={ shadowColor }
-			textColor={ textColor }
+			{ ...props }
 		>
 			{ children || label }
 		</Button>

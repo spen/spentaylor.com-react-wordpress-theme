@@ -15,20 +15,19 @@ import ShowIntroButton from './ShowIntroButton';
 import { buttonStyler } from './styles/Button';
 import StyledHeader from './styles/Header';
 
-export const Header = ( { currentContentPath, showContent } ) => {
-	const Button = showContent ? ShowIntroButton : ShowContentButton;
-	const StyledButton = buttonStyler( Button );
-	const StyledPreviousButton = buttonStyler( PreviousButton );
-	const StyledNextButton = buttonStyler( NextButton );
+const StyledPreviousButton = buttonStyler( PreviousButton );
+const StyledNextButton = buttonStyler( NextButton );
+const StyledShowIntroButton = buttonStyler( ShowIntroButton );
+const StyledShowContentButton = buttonStyler( ShowContentButton );
 
-	return (
-		<StyledHeader show={ !! currentContentPath } showContent={ showContent }>
-			<StyledPreviousButton showContent={ showContent } />
-			<StyledButton showContent={ showContent } />
-			<StyledNextButton showContent={ showContent } />
-		</StyledHeader>
-	);
-};
+export const Header = ( { currentContentPath, showContent } ) => (
+	<StyledHeader show={ !! currentContentPath } showContent={ showContent }>
+		<StyledPreviousButton showContent={ showContent } />
+		<StyledShowIntroButton showContent={ showContent } />
+		<StyledShowContentButton showContent={ showContent } />
+		<StyledNextButton showContent={ showContent } />
+	</StyledHeader>
+);
 
 export default connect(
 	state => ( {

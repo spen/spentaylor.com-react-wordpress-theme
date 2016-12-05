@@ -11,8 +11,10 @@ export const buttonStyles = css`
 	vertical-align: middle;
 	width: 60px;
 	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.1);
+	min-height: 60px;
 	line-height: 60px;
 	height: 60px;
+	margin: 0;
 
 	&:hover {
 		font-size: ${ props => props.showContent ? '1.8em' : '2.8em' };
