@@ -13,9 +13,11 @@ export default function( { children, label, LeftIcon, RightIcon, ...props } ) {
 	const PulledLeftIcon = LeftIcon ? pullLeft( LeftIcon ) : null;
 	const PulledRightIcon = RightIcon ? pullRight( RightIcon ) : null;
 
+	const pad = label && ( LeftIcon || RightIcon );
+
 	return (
 		<Button { ...props }>
-			<Content pad={ LeftIcon || RightIcon }>
+			<Content pad={ pad }>
 				{ PulledLeftIcon && <PulledLeftIcon /> }
 				{ children || label }
 				{ PulledRightIcon && <PulledRightIcon /> }
