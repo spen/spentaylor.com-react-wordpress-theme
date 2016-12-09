@@ -21,9 +21,9 @@ import App from 'containers/App';
 import AboutPage from 'containers/AboutPage';
 import BlogPage from 'containers/BlogPage';
 import BlogPageContent from 'containers/BlogPage/Content';
-
 import ContactPage from 'containers/ContactPage';
 import ProjectsPage from 'containers/ProjectsPage';
+import ProjectContent from 'containers/ProjectsPage/Content';
 import configureStore from './store';
 
 import 'assets/temp-styles.css';
@@ -81,15 +81,16 @@ ReactDOM.render(
 				<Route path="/blog" component={ BlogPage } onLeave={ onBlogRootLeave } >
 					<IndexRoute component={ BlogPageContent } onEnter={ onBlogRootEnter } />
 					<Route
-						path="/blog/:slug"
 						component={ BlogPageContent }
+						path="/blog/:slug"
 						onEnter={ onBlogPostEnter }
 					/>
 				</Route>
 				<Route path="/contact" component={ ContactPage } />
 				<Route path="/projects" component={ ProjectsPage } onLeave={ onProjectsRootLeave } >
-					<IndexRoute onEnter={ onProjectsRootEnter } />
+					<IndexRoute component={ ProjectContent } onEnter={ onProjectsRootEnter } />
 					<Route
+						component={ ProjectContent }
 						path="/projects/:slug"
 						onEnter={ onProjectEnter }
 					/>
