@@ -9,7 +9,7 @@ import React from 'react';
 import { buttonStyler } from './styles';
 
 export default function( { children, href, label, openNew, ...props } ) {
-	const Button = buttonStyler( href ? 'a' : 'div' );
+	const Button = buttonStyler( href ? 'a' : 'button' );
 	const linkProps = {
 		href,
 	};

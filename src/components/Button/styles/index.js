@@ -14,14 +14,6 @@ export const constants = {
 	DEFAULT_HEIGHT,
 };
 
-const getBackgroundColor = ( { mainColor } ) => {
-	if ( mainColor ) {
-		return `
-			backgroundColor: ${ mainColor };
-		`;
-	}
-};
-
 const getBoxShadow = ( { shadowColor } ) => {
 	if ( shadowColor ) {
 		return `
@@ -48,7 +40,7 @@ const getHeight = ( { height } ) => {
 
 export const buttonStyles = css`
 	color: ${ propValue( 'textColor', '#fff' ) };
-	${ getBackgroundColor }
+	background-color: ${ propValue( 'mainColor', 'transparent' ) };
 	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 	${ getHeight }
 	min-width: ${ DEFAULT_HEIGHT }px;
@@ -60,7 +52,14 @@ export const buttonStyles = css`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border-style: none;
+	padding-top: 0;
+	padding-bottom: 0;
 	${ getBoxShadow }
+
+	&:focus {
+		outline: none;
+	}
 `;
 
 export function buttonStyler( Button ) {
