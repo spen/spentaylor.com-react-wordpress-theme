@@ -52,6 +52,25 @@ function onBlogPostEnter( routeData ) {
 	} );
 }
 
+function onProjectsRootEnter() {
+	store.dispatch( {
+		type: 'PROJECTS_SET_DEFAULT',
+	} );
+}
+
+function onProjectsRootLeave() {
+	store.dispatch( {
+		type: 'ROUTING_CLEAR_PREVIOUS_AND_NEXT',
+	} );
+}
+
+function onProjectEnter( routeData ) {
+	store.dispatch( {
+		type: 'PROJECTS_SET_ACTIVE',
+		slug: routeData.params.slug,
+	} );
+}
+
 const rootElement = document.getElementById( 'root' );
 
 ReactDOM.render(
@@ -68,7 +87,13 @@ ReactDOM.render(
 					/>
 				</Route>
 				<Route path="/contact" component={ ContactPage } />
-				<Route path="/projects" component={ ProjectsPage } />
+				<Route path="/projects" component={ ProjectsPage } onLeave={ onProjectsRootLeave } >
+					<IndexRoute onEnter={ onProjectsRootEnter } />
+					<Route
+						path="/projects/:slug"
+						onEnter={ onProjectEnter }
+					/>
+				</Route>
 				<Route path="*" />
 			</Route>
 		</Router>
