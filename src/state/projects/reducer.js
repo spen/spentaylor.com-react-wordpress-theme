@@ -23,19 +23,19 @@ export default function( state = initialState, action ) {
 		case PROJECTS_SET_ACTIVE_SLUG:
 			return {
 				...state,
-				activeProjectSlug: action.slug,
+				activeSlug: action.slug,
 			};
 		case PROJECTS_ERROR_SET:
 			return {
 				...state,
-				projectsError: {
+				error: {
 					message: action.message,
 				},
 			};
 		case PROJECTS_ERROR_CLEAR:
 			return {
 				...state,
-				projectsError: initialState.projectsError,
+				error: initialState.projectsError,
 			};
 		default:
 			return state;

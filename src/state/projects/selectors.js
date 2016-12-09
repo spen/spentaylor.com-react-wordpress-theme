@@ -1,23 +1,73 @@
 /**
  * External Dependencies
  */
-import { find, get } from 'lodash';
+import { indexOf, find, get } from 'lodash';
 
 export function getProjects( state ) {
 	return get( state, 'projects.list' );
 }
 
-export function getCurrentProjectId( state ) {
-	return get( state, 'projects.currentId' );
-}
-
-export function getCurrentProject( state ) {
+export function getProjectBySlug( state, slug ) {
 	const projects = getProjects( state );
-	const currentId = getCurrentProjectId( state );
 
-	if ( ! projects || ! currentId ) {
+	if ( ! projects || ! slug ) {
 		return null;
 	}
 
-	return find( projects, { ID: currentId } );
+	return find( projects, { slug } );
+}
+
+export function getActiveProject( state ) {
+	const projects = getProjects( state );
+	const activeProjectSlug = getActiveProjectSlug( state );
+
+	if ( ! projects || ! activeProjectSlug ) {
+		return null;
+	}
+
+	return getProjectBySlug( state, activeProjectSlug );
+}
+
+export function getActiveProjectSlug( state ) {
+	return get( state, 'projects.activeSlug' );
+}
+
+export function getNextProjectSlug( state ) {
+	const projects = getProjects( state );
+	const activeProjectSlug = getActiveProjectSlug( state );
+	const activeProject = getProjectBySlug( state, activeProjectSlug );
+
+	const index = indexOf( projects, activeProject );
+
+	if ( index < 0 || ! activeProject ) {
+		return null;
+	}
+
+	const targetIndex = index + 1;
+
+	return targetIndex <= projects.length - 1
+		? projects[ targetIndex ].slug
+		: null;
+}
+
+export function getPreviousProjectSlug( state ) {
+	const projects = getProjects( state );
+	const activeProjectSlug = getActiveProjectSlug( state );
+	const activeProject = getProjectBySlug( state, activeProjectSlug );
+
+	const index = indexOf( projects, activeProject );
+
+	if ( index < 0 || ! activeProject ) {
+		return null;
+	}
+
+	const targetIndex = index - 1;
+
+	return targetIndex >= 0
+		? projects[ targetIndex ].slug
+		: null;
+}
+
+export function getProjectsError( state ) {
+	return get( state, 'projects.error' );
 }

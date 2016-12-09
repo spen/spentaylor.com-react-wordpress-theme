@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 /**
  * Internal Dependencies
  */
-import { getCurrentProject } from 'state/projects/selectors';
+import { getActiveProject } from 'state/projects/selectors';
 
 export class CurrentProject extends Component {
 	render() {
@@ -24,7 +24,7 @@ export class CurrentProject extends Component {
 }
 
 function mapStateToProps( state ) {
-	const currentProject = getCurrentProject( state );
+	const currentProject = getActiveProject( state );
 
 	return {
 		currentProject,
