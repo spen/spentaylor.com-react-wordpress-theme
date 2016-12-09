@@ -1,8 +1,8 @@
 const initialState = {
 	list: [],
 	total: 0,
-	activeProjectSlug: null,
-	projectsError: {},
+	activeSlug: null,
+	error: {},
 };
 
 export default initialState;
