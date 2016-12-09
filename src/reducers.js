@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import { combineReducers } from 'redux';
+import { reducer as reduxFormReducer } from 'redux-form';
 
 /**
  * Internal Dependencies
@@ -15,6 +16,7 @@ export default function createReducer( asyncReducers ) {
 		blog: blogReducer,
 		routing: routingReducer,
 		projects: projectsReducer,
+		form: reduxFormReducer,
 		...asyncReducers,
 	} );
 }
