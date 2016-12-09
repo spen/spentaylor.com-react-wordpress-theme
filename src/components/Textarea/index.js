@@ -13,4 +13,5 @@ export default styled( Textarea )`
 	width: 100%;
     margin: 8px auto;
 	padding: 0.7em 0.6em;
+	resize: none;
 `;

@@ -7,12 +7,18 @@ import React from 'react';
  * Internal Dependencies
  */
 import ContactForm from 'components/ContactForm';
+import ButtonsArea from './styles/ButtonsArea';
+import FormArea from './styles/FormArea';
 import SocialButtons from './SocialButtons';
 
 export default () => (
 	<div>
-		<h2>Contact</h2>
-		<SocialButtons />
-		<ContactForm />
+		<ButtonsArea>
+			<h2>Contact</h2>
+			<SocialButtons />
+		</ButtonsArea>
+		<FormArea>
+			<ContactForm />
+		</FormArea>
 	</div>
 );
