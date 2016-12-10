@@ -6,7 +6,7 @@ import React from 'react';
 /**
  * Internal Dependencies
  */
-import ContactForm from 'components/ContactForm';
+import ContactForm from 'containers/ContactForm';
 import ButtonsArea from './styles/ButtonsArea';
 import FormArea from './styles/FormArea';
 import SocialButtons from './SocialButtons';
