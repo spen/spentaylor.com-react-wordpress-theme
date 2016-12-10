@@ -11,6 +11,7 @@ import { each } from 'lodash';
  */
 import createReducer from './reducers';
 import blogSagas from 'state/blog/sagas';
+import contactFormSagas from 'state/form/contactForm/sagas';
 import projectsSagas from 'state/projects/sagas';
 import routingSagas from 'state/routing/sagas';
 
@@ -33,6 +34,10 @@ export default function( initialState = {}, history ) {
 	store.runSaga = sagaMiddleware.run;
 
 	each( blogSagas, saga => {
+		sagaMiddleware.run( saga );
+	} );
+
+	each( contactFormSagas, saga => {
 		sagaMiddleware.run( saga );
 	} );
 

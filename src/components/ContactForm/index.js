@@ -1,8 +1,9 @@
 /**
  * External Dependencies
  */
-import { noop } from 'lodash';
 import React from 'react';
+import { connect } from 'react-redux';
+import { compose } from 'redux';
 import { Field, reduxForm } from 'redux-form';
 
 /**
@@ -11,11 +12,12 @@ import { Field, reduxForm } from 'redux-form';
 import InputField from 'components/InputField';
 import SubmitButton from 'components/SubmitButton';
 import TextareaField from 'components/TextareaField';
+import { submitContactForm } from 'state/form/contactForm/actions';
 
-const Form = () => (
+const Form = ( { handleSubmit, submitContactForm } ) => (
 	<div>
 		<h2>Say Hello!</h2>
-		<form onSubmit={ noop }>
+		<form onSubmit={ handleSubmit( submitContactForm ) }>
 			<Field name="name" type="text" component={ InputField } placeholder="Name" />
 			<Field name="email" type="email" component={ InputField } placeholder="Email" />
 			<Field name="message" component={ TextareaField } placeholder="What's up?" />
@@ -24,6 +26,12 @@ const Form = () => (
 	</div>
 );
 
-export default reduxForm( {
-	form: 'contactForm',
-} )( Form );
+export default compose(
+	connect(
+		null,
+		{ submitContactForm }
+	),
+	reduxForm( {
+		form: 'contactForm',
+	} )
+)( Form );
