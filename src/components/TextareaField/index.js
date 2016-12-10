@@ -8,11 +8,19 @@ import React from 'react';
  */
 import Textarea from 'components/Textarea';
 
-const TextareaField = ( { input, label, maxRows, minRows, placeholder } ) => (
+const TextareaField = ( {
+	input,
+	label,
+	maxRows,
+	meta: { touched, error },
+	minRows,
+	placeholder,
+} ) => (
 	<div>
 		{ label && <label>{ label }:</label> }
 		<Textarea
 			{ ...input }
+			error={ touched && error }
 			maxRows={ maxRows }
 			minRows={ minRows }
 			placeholder={ placeholder }
