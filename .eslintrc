@@ -5,12 +5,15 @@
 			2,
 			'always-multiline'
 		],
-		'wpcalypso/jsx-classname-namespace' : 0
+		'wpcalypso/jsx-classname-namespace' : 0,
+		'no-shadow': 0,
 	},
 	globals: {
 		document: true,
 		module: true,
-    	window: true
+    	window: true,
+    	FormData: true,
+    	Headers: true,
 	},
 	parserOptions: {
 		ecmaFeatures: {
