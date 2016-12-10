@@ -7,12 +7,12 @@ import React from 'react';
  * Internal Dependencies
  */
 import socialNetworks from 'constants/socialNetworks';
-import IconButton from 'components/IconButton';
+import Button from './styles/Button';
 
 export default () => (
 	<div>
 		{ socialNetworks.map( socialNetwork => (
-			<IconButton
+			<Button
 				href={ socialNetwork.url }
 				key={ socialNetwork.url }
 				openNew={ true }
