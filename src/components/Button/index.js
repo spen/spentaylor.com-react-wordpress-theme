@@ -6,26 +6,29 @@ import React from 'react';
 /**
  * Internal Dependencies
  */
-import { buttonStyler } from './styles';
+import { A, Button } from './styles';
 
-export default function( { children, href, label, openNew, ...props } ) {
-	const Button = buttonStyler( href ? 'a' : 'button' );
-	const linkProps = {
-		href,
-	};
-
+export default ( { children, href, label, openNew, ...props } ) => {
 	if ( href && openNew ) {
-		linkProps.rel = 'noopener noreferrer';
-		linkProps.target = '_blank';
+		const linkProps = {
+			rel: 'noopener noreferrer',
+			target: '_blank',
+			href,
+		};
+
+		return (
+			<A
+				{ ...linkProps }
+				{ ...props }
+			>
+				{ children || label }
+			</A>
+		);
 	}
 
 	return (
-		<Button
-			{ ...linkProps }
-			{ ...props }
-		>
+		<Button { ...props }>
 			{ children || label }
 		</Button>
 	);
-}
-
+};

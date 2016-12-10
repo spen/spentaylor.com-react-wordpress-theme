@@ -62,6 +62,6 @@ export const buttonStyles = css`
 	}
 `;
 
-export function buttonStyler( Button ) {
-	return styled( Button )`${ buttonStyles }`;
-}
+export const A = styled.a`${ buttonStyles }`;
+
+export const Button = styled.button`${ buttonStyles }`;

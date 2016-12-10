@@ -23,4 +23,5 @@ export default styled.input`
 	width: 100%;
     margin: 8px auto;
 	padding: 0.2em 0.6em;
+	height: 50px;
 `;
