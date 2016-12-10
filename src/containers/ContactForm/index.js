@@ -13,6 +13,7 @@ import InputField from 'components/InputField';
 import SubmitButton from 'components/SubmitButton';
 import TextareaField from 'components/TextareaField';
 import { submitContactForm } from 'state/form/contactForm/actions';
+import validate from './validate';
 
 const Form = ( { handleSubmit, submitContactForm } ) => (
 	<div>
@@ -33,5 +34,6 @@ export default compose(
 	),
 	reduxForm( {
 		form: 'contactForm',
+		validate,
 	} )
 )( Form );
