@@ -6,6 +6,10 @@ import styled, { css } from 'styled-components';
 /**
  * Internal Dependencies
  */
+import {
+	DISABLED_BUTTON_HEX,
+	DISABLED_BUTTON_SHADOW_HEX,
+} from 'constants/colors';
 import { propValue } from 'utils/styles';
 
 const DEFAULT_HEIGHT = 50;
@@ -14,16 +18,24 @@ export const constants = {
 	DEFAULT_HEIGHT,
 };
 
-const getBoxShadow = ( { shadowColor } ) => {
+const getBoxShadow = ( { disabled, shadowColor } ) => {
 	if ( shadowColor ) {
 		return `
-			box-shadow: 0 4px 0 ${ shadowColor };
+			box-shadow: 0 4px 0 ${ disabled ? DISABLED_BUTTON_SHADOW_HEX : shadowColor };
 			&:active {
 				top: 3px;
-				box-shadow: 0 1px 0 ${ shadowColor };
+				box-shadow: 0 1px 0 ${ disabled ? DISABLED_BUTTON_SHADOW_HEX : shadowColor };
 			}
 		`;
 	}
+};
+
+const getBackgroundColor = ( { disabled, mainColor } ) => {
+	const color = disabled
+		? DISABLED_BUTTON_HEX
+		: propValue( 'mainColor', 'transparent' )( { mainColor } );
+
+	return `background-color: ${ color };`;
 };
 
 const getHeight = ( { height } ) => {
@@ -40,7 +52,7 @@ const getHeight = ( { height } ) => {
 
 export const buttonStyles = css`
 	color: ${ propValue( 'textColor', '#fff' ) };
-	background-color: ${ propValue( 'mainColor', 'transparent' ) };
+	${ getBackgroundColor }
 	text-shadow: 0 2px 0 rgba(0, 0, 0, 0.2);
 	${ getHeight }
 	min-width: ${ DEFAULT_HEIGHT }px;

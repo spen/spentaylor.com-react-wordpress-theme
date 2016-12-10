@@ -15,14 +15,15 @@ import TextareaField from 'components/TextareaField';
 import { submitContactForm } from 'state/form/contactForm/actions';
 import validate from './validate';
 
-const Form = ( { handleSubmit, submitContactForm } ) => (
+const Form = ( { handleSubmit, invalid, submitContactForm, submitting } ) => (
 	<div>
 		<h2>Say Hello!</h2>
 		<form onSubmit={ handleSubmit( submitContactForm ) }>
 			<Field name="name" type="text" component={ InputField } placeholder="Name" />
 			<Field name="email" type="email" component={ InputField } placeholder="Email" />
 			<Field name="message" component={ TextareaField } placeholder="What's up?" />
-			<SubmitButton>Fire Away!</SubmitButton>
+			<SubmitButton disabled={ submitting || invalid }>Fire Away!</SubmitButton>
+
 		</form>
 	</div>
 );
