@@ -15,12 +15,16 @@ const getPadding = props => {
 export const pullLeft = Icon => styled( Icon )`
 	left: 0;
 	position: absolute;
+	transform: translateY(-50%);
+    top: 50%;
 	width: ${ BUTTON_HEIGHT }px;
 `;
 
 export const pullRight = Icon => styled( Icon )`
 	right: 0;
 	position: absolute;
+	transform: translateY(-50%);
+    top: 50%;
 	width: ${ BUTTON_HEIGHT }px;
 `;
 
