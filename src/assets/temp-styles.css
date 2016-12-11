@@ -9,6 +9,7 @@ html, body {
 
 html {
 	overflow: hidden;
+	font-family: 'Open Sans', sans-serif;
 }
 
 #root {
@@ -18,9 +19,4 @@ html {
 
 .header a {
 	color: white;
-}
-
-.RouteTransition {
-	position: absolute;
-	width: 100%;
 }
