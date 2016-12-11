@@ -8,6 +8,7 @@ import React from 'react';
  */
 import socialNetworks from 'constants/socialNetworks';
 import Button from './styles/Button';
+import { iconStyler } from './styles/Icon';
 
 export default () => (
 	<div>
@@ -20,7 +21,8 @@ export default () => (
 				shadowColor={ socialNetwork.darkColor }
 				textColor={ socialNetwork.textColor }
 				label={ socialNetwork.title }
-				LeftIcon={ socialNetwork.icon }
+				Icon={ iconStyler( socialNetwork.icon ) }
+				iconPlacement="left"
 			/>
 		) ) }
 	</div>

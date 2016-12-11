@@ -12,20 +12,16 @@ const getPadding = props => {
 	` : null;
 };
 
-const pulledIconStyles = css`
-	position: absolute;
-	width: ${ BUTTON_HEIGHT }px;
-	height: 1.6em;
-`;
-
 export const pullLeft = Icon => styled( Icon )`
 	left: 0;
-	${ pulledIconStyles }
+	position: absolute;
+	width: ${ BUTTON_HEIGHT }px;
 `;
 
 export const pullRight = Icon => styled( Icon )`
 	right: 0;
-	${ pulledIconStyles }
+	position: absolute;
+	width: ${ BUTTON_HEIGHT }px;
 `;
 
 export const contentStyles = css`

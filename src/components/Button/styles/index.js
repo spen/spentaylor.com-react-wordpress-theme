@@ -42,7 +42,7 @@ const getHeight = ( { height } ) => {
 	return height
 		? `
 			height: ${ height };
-			line-height: ${ height }px;
+			line-height: ${ height };
 		`
 		: `
 			min-height: ${ DEFAULT_HEIGHT }px;
@@ -58,15 +58,14 @@ export const buttonStyles = css`
 	min-width: ${ DEFAULT_HEIGHT }px;
 	text-align: center;
 	position: relative;
-	display: inline-block;
+	display: block;
 	cursor: pointer;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	border-style: none;
-	padding-top: 0;
-	padding-bottom: 0;
+	padding: 0;
 	${ getBoxShadow }
 
 	&:focus {
