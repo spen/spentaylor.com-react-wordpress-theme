@@ -12,6 +12,15 @@ html {
 	font-family: 'Open Sans', sans-serif;
 }
 
+p {
+	font-size: 1.2em;
+}
+
+h2 {
+    font-size: 2em;
+    margin: 0.67em 0;
+}
+
 #root {
 	height: 100%;
 	background-color: whitesmoke;
