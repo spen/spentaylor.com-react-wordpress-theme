@@ -71,12 +71,19 @@ function onProjectEnter( routeData ) {
 	} );
 }
 
+const originalTitle = document.title;
+function resetTitle() {
+	// Nasty little hack :/
+	window.setTimeout( () => document.title = originalTitle, 0 );
+}
+
 const rootElement = document.getElementById( 'root' );
 
 ReactDOM.render(
 	<Provider store={ store }>
 		<Router history={ history }>
-			<Route path="/" component={ App }>
+			<Route path="/" component={ App } onEnter={ resetTitle }>
+				<IndexRoute onEnter={ resetTitle } />
 				<Route path="/about" component={ AboutPage } />
 				<Route path="/blog" component={ BlogPage } onLeave={ onBlogRootLeave } >
 					<IndexRoute component={ BlogPageContent } onEnter={ onBlogRootEnter } />
