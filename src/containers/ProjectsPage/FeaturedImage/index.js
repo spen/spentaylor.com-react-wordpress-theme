@@ -3,8 +3,13 @@
  */
 import styled from 'styled-components';
 
+/**
+ * Internal Dependencies
+ */
+import { LIGHT_GREY_HEX } from 'constants/colors';
+
 export default styled.div`
-	background-color: #999;
+	background-color: ${ LIGHT_GREY_HEX };
 	background-image: url(${ props => props.src });
 	background-size: cover;
 	background-repeat: no-repeat;
