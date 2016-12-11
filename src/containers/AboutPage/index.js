@@ -3,6 +3,7 @@
  */
 import React from 'react';
 import ReactMarkdown from 'react-markdown';
+import DocumentTitle from 'react-document-title';
 
 /**
  * Internal Dependencies
@@ -14,13 +15,15 @@ import WorkExperience from './WorkExperience';
 import data from './data.json';
 
 export default () => (
-	<ContentContainer>
-		<h2>About</h2>
-		<Paper>
-			<CopyBlock>
-				<ReactMarkdown source={ data.blurb } />
-			</CopyBlock>
-			<WorkExperience />
-		</Paper>
-	</ContentContainer>
+	<DocumentTitle title="About | Spen Taylor">
+		<ContentContainer>
+			<h2>About</h2>
+			<Paper>
+				<CopyBlock>
+					<ReactMarkdown source={ data.blurb } />
+				</CopyBlock>
+				<WorkExperience />
+			</Paper>
+		</ContentContainer>
+	</DocumentTitle>
 );

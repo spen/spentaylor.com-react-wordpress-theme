@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React from 'react';
+import DocumentTitle from 'react-document-title';
 
 /**
  * Internal Dependencies
@@ -9,7 +10,9 @@ import React from 'react';
 import PageTransition from 'components/PageTransition';
 
 export default ( { children, location } ) => (
-	<PageTransition location={ location }>
-		{ children }
-	</PageTransition>
+	<DocumentTitle title="Projects | Spen Taylor">
+		<PageTransition location={ location }>
+			{ children }
+		</PageTransition>
+	</DocumentTitle>
 );

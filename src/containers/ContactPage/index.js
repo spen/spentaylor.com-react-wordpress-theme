@@ -2,6 +2,7 @@
  * External Dependencies
  */
 import React from 'react';
+import DocumentTitle from 'react-document-title';
 
 /**
  * Internal Dependencies
@@ -12,13 +13,15 @@ import FormArea from './styles/FormArea';
 import SocialButtons from './SocialButtons';
 
 export default () => (
-	<div>
-		<ButtonsArea>
-			<h2>Contact</h2>
-			<SocialButtons />
-		</ButtonsArea>
-		<FormArea>
-			<ContactForm />
-		</FormArea>
-	</div>
+	<DocumentTitle title="Contact | Spen Taylor">
+		<div>
+			<ButtonsArea>
+				<h2>Contact</h2>
+				<SocialButtons />
+			</ButtonsArea>
+			<FormArea>
+				<ContactForm />
+			</FormArea>
+		</div>
+	</DocumentTitle>
 );
