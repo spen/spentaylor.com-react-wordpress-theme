@@ -11,6 +11,7 @@ import React from 'react';
 import ContentContainer from 'components/ContentContainer';
 import CopyBlock from 'components/CopyBlock';
 import Paper from 'components/Paper';
+import FeaturedImage from '../FeaturedImage';
 
 function getContentHtml( content ) {
 	// TODO: Explore html sanitizers to set this safely.
@@ -28,6 +29,7 @@ export default ( { project } ) => {
 		<ContentContainer>
 			<h1>{ project.title }</h1>
 			<Paper>
+				<FeaturedImage src={ project.featured_image } />
 				<CopyBlock
 					dangerouslySetInnerHTML={ getContentHtml( project.content ) }
 				/>
