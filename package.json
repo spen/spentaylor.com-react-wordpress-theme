@@ -12,6 +12,7 @@
     "lodash": "^4.17.2",
     "normalize.css": "^5.0.0",
     "react": "^15.4.1",
+    "react-document-title": "^2.0.2",
     "react-dom": "^15.4.1",
     "react-icons": "^2.2.1",
     "react-markdown": "^2.4.2",
