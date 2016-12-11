@@ -25,6 +25,7 @@
     "redux-form": "^6.3.2",
     "redux-saga": "^0.13.0",
     "styled-components": "^1.0.11",
+    "svg-react-loader": "^0.3.7",
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {

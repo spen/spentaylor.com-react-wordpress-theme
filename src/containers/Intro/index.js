@@ -12,10 +12,7 @@ import Cell from 'components/Cell';
 import SocialIconGroup from 'containers/SocialIconGroup';
 import StyledIntro from './styles/intro';
 
-const StyledH2 = styled.h2`
-  	color: tomato;
-  	text-align: center;
-`;
+import HeroSvg from 'assets/images/hero.svg';
 
 const WhiteP = styled.p`
 	color: white;
@@ -31,7 +28,7 @@ export default class Intro extends Component {
 			<StyledIntro>
 				<SocialIconGroup />
 				<Cell>
-					<StyledH2>Intro</StyledH2>
+					<HeroSvg />
 					<WhiteP>
 						Hi! I'm <StyledLink to="/about">Spen</StyledLink>,
 						a (mostly Front-End) web developer.<br />
