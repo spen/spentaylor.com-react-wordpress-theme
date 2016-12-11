@@ -13,7 +13,7 @@ import IconButton from 'components/IconButton';
 export default ( { className } ) => (
 	<IndexLink className={ className } to="/">
 		<IconButton
-			LeftIcon={ BarsIcon }
+			Icon={ BarsIcon }
 			width="60px"
 			height="60px"
 		/>

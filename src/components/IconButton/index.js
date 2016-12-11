@@ -9,19 +9,32 @@ import React from 'react';
 import Button from 'components/Button';
 import { Content, pullLeft, pullRight } from './styles';
 
-export default function( { children, label, LeftIcon, RightIcon, ...props } ) {
-	const PulledLeftIcon = LeftIcon ? pullLeft( LeftIcon ) : null;
-	const PulledRightIcon = RightIcon ? pullRight( RightIcon ) : null;
+const IconButton = ( { children, label, Icon, iconPlacement, ...props } ) => {
+	let PositionedIcon;
 
-	const pad = label && ( LeftIcon || RightIcon );
+	if ( iconPlacement === 'left' ) {
+		PositionedIcon = pullLeft( Icon );
+	} else if ( iconPlacement === 'right' ) {
+		PositionedIcon = pullRight( Icon );
+	} else {
+		PositionedIcon = Icon;
+	}
+
+	const pad = ( label && ( iconPlacement === 'left' || iconPlacement === 'right' ) );
 
 	return (
 		<Button { ...props }>
-			<Content pad={ pad }>
-				{ PulledLeftIcon && <PulledLeftIcon /> }
+			<Content pad={ pad } >
+				<PositionedIcon />
 				{ children || label }
-				{ PulledRightIcon && <PulledRightIcon /> }
 			</Content>
 		</Button>
 	);
-}
+};
+
+IconButton.defaultProps = {
+	Icon: null,
+	iconPlacement: 'centre',
+};
+
+export default IconButton;

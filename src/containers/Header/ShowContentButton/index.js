@@ -16,7 +16,7 @@ export const ShowContentButton = ( { className, currentContentPath } ) => (
 	<Link to={ currentContentPath }>
 		<IconButton
 			className={ className }
-			LeftIcon={ DownIcon }
+			Icon={ DownIcon }
 			width="60px"
 			height="60px"
 			textColor="#00c8b4"
