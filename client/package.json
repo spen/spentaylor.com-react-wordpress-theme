@@ -53,10 +53,12 @@
     "webpack-dev-server": "^1.9.0"
   },
   "scripts": {
-    "clean": "rimraf dist",
-    "build": "npm run clean && webpack",
-    "start": "npm run build && node server.js",
-    "lint": "eslint src"
+    "clean": "rimraf dev",
+    "clean-dist": "rimraf dist",
+    "build": "npm run clean && webpack --config webpack.dev.js",
+    "export": "npm run clean-dist && webpack --config webpack.prod.js",
+    "lint": "eslint src",
+    "start": "npm run build && node server.js"
   },
   "pre-commit": [
     "lint"
