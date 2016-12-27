@@ -12,10 +12,20 @@ import Cell from 'components/Cell';
 import SocialIconGroup from 'containers/SocialIconGroup';
 import StyledIntro from './styles/intro';
 
-import HeroSvg from 'assets/images/hero.svg';
-
 const WhiteP = styled.p`
 	color: white;
+`;
+
+const StyledGreeting = styled.h1`
+	color: rgba(255,90,110,1);
+	font-size: 15vw;
+	text-shadow: 0 6px rgba(125,30,40,1);
+	margin: 0.2em auto;
+
+	@media (min-width: 960px) {
+		font-size: 8em;
+	}
+
 `;
 
 const StyledLink = styled( Link )`
@@ -28,9 +38,9 @@ export default class Intro extends Component {
 			<StyledIntro>
 				<SocialIconGroup />
 				<Cell>
-					<HeroSvg />
+					<StyledGreeting>Oh Hey! 👋</StyledGreeting>
 					<WhiteP>
-						Hi! I'm <StyledLink to="/about">Spen</StyledLink>,
+						I'm <StyledLink to="/about">Spen</StyledLink>,
 						a (mostly Front-End) web developer.<br />
 						Please check out <StyledLink to="/projects">my work</StyledLink> &amp;
 						<StyledLink to="/blog"> my blog</StyledLink> and if there's anything else,
