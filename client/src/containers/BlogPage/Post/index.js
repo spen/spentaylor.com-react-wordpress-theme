@@ -26,7 +26,9 @@ export default ( { post } ) => {
 
 	return (
 		<ContentContainer>
-			<h1>{ post.title }</h1>
+			<h1
+				dangerouslySetInnerHTML={ getContentHtml( post.title ) }
+			/>
 			<Paper>
 				<CopyBlock
 					dangerouslySetInnerHTML={ getContentHtml( post.content ) }

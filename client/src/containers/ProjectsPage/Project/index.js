@@ -27,7 +27,9 @@ export default ( { project } ) => {
 
 	return (
 		<ContentContainer>
-			<h1>{ project.title }</h1>
+			<h1
+				dangerouslySetInnerHTML={ getContentHtml( project.title ) }
+			/>
 			<Paper>
 				<FeaturedImage src={ project.featured_image } />
 				<CopyBlock
