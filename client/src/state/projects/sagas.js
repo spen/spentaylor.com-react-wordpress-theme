@@ -25,6 +25,7 @@ import {
 	setActiveProjectSlug,
 	setProjectsError,
 } from './actions';
+import parseProjects from './parseProjects';
 import {
 	getActiveProjectSlug,
 	getNextProjectSlug,
@@ -35,14 +36,15 @@ import {
 } from './selectors';
 
 export function* fetchProjects() {
-	const requestURL = 'http://public-api.wordpress.com/rest/v1.1/sites/' +
-		PROJECTS_SITE_URL + '/posts?callback=?';
-	const response = yield call( request, requestURL );
+	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/jetpack-portfolio';
+	const response = yield call( request, requestURL, {
+		parse: parseProjects
+	} );
 
 	if ( ! response.err ) {
 		yield put( recieveProjects( response ) );
 	} else {
-		// TODO: 'put' failed action
+		yield put(setProjectsError( 'Something went wrong while connecting to wordpress :(' ) );
 	}
 }
 
