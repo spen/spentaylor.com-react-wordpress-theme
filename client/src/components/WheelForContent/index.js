@@ -15,7 +15,6 @@ const wheelForContent = WrappedComponent => {
 	class WheelForContentComponent extends PureComponent {
 
 		constructor(props) {
-			console.log( 'wheelForContent');
 			super(props);
 			this.debouncedNavigate = debounce( this.navigate, 1000, { leading: true } );
 			this.handleWheel = this.handleWheel.bind( this );
