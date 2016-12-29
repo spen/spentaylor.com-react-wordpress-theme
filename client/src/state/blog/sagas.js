@@ -9,7 +9,6 @@ import { takeEvery } from 'redux-saga';
 /**
  * Internal Dependencies
  */
-import { SITE_URL } from 'constants/wp';
 import {
 	BLOG_POSTS_FETCH,
 	BLOG_SET_ACTIVE_POST,

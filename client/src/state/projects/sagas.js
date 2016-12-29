@@ -9,7 +9,6 @@ import { takeEvery } from 'redux-saga';
 /**
  * Internal Dependencies
  */
-import { PROJECTS_SITE_URL } from 'constants/wp';
 import {
 	PROJECTS_FETCH,
 	PROJECTS_SET_ACTIVE,
