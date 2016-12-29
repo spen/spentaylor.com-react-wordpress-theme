@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import Cell from 'components/Cell';
 import SocialIconGroup from 'containers/SocialIconGroup';
 import StyledIntro from './styles/intro';
+import WheelForContent from 'components/WheelForContent';
 
 const WhiteP = styled.p`
 	color: white;
@@ -32,10 +33,10 @@ const StyledLink = styled( Link )`
 	color: #00c8b4;
 `;
 
-export default class Intro extends Component {
+export class Intro extends Component {
 	render() {
 		return (
-			<StyledIntro>
+			<StyledIntro onWheel={ this.props.onWheel }>
 				<SocialIconGroup />
 				<Cell>
 					<StyledGreeting>Oh Hey! 👋</StyledGreeting>
@@ -51,3 +52,5 @@ export default class Intro extends Component {
 		);
 	}
 }
+
+export default WheelForContent( Intro );
