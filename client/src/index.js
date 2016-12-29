@@ -8,7 +8,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { hashHistory, IndexRoute, Route, Router } from 'react-router';
+import { browserHistory, IndexRoute, Route, Router } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import 'normalize.css';
@@ -28,8 +28,10 @@ import configureStore from './store';
 
 import 'assets/temp-styles.css';
 
-const store = configureStore( {}, hashHistory );
-const history = syncHistoryWithStore( hashHistory, store );
+const store = configureStore( {}, browserHistory );
+const history = syncHistoryWithStore( browserHistory, store );
+
+console.log('using browserHistory');
 
 // TODO: Have modules define their own routes,
 // this isn't the place for these actions.
