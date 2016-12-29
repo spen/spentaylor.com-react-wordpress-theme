@@ -25,6 +25,7 @@ import {
 	setActivePostSlug,
 	setPostsError,
 } from './actions';
+import parsePosts from './parsePosts';
 import {
 	getActivePostSlug,
 	getNextPostSlug,
@@ -35,9 +36,10 @@ import {
 } from './selectors';
 
 export function* fetchPosts() {
-	const requestURL = 'http://public-api.wordpress.com/rest/v1.1/sites/' +
-		SITE_URL + '/posts?callback=?';
-	const response = yield call( request, requestURL );
+	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/posts';
+	const response = yield call( request, requestURL, {
+		parse: parsePosts
+	} );
 
 	if ( ! response.err ) {
 		yield put( recievePosts( response ) );
