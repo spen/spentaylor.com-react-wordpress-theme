@@ -34,7 +34,7 @@ export default ( { project } ) => {
 			<Paper>
 				<FeaturedImage src={ project.featured_image } />
 				<CopyBlock
-					dangerouslySetInnerHTML={ getContentHtml( get( project, 'title.rendered' ) ) }
+					dangerouslySetInnerHTML={ getContentHtml( get( project, 'content.rendered' ) ) }
 				/>
 			</Paper>
 		</ContentContainer>

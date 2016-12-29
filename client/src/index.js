@@ -31,8 +31,6 @@ import 'assets/temp-styles.css';
 const store = configureStore( {}, browserHistory );
 const history = syncHistoryWithStore( browserHistory, store );
 
-console.log('using browserHistory');
-
 // TODO: Have modules define their own routes,
 // this isn't the place for these actions.
 function onBlogRootEnter() {
