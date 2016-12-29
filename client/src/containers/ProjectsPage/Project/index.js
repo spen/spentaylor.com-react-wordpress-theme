@@ -4,6 +4,7 @@
  * External Dependencies
  */
 import React from 'react';
+import { get } from 'lodash';
 
 /**
  * Internal Dependencies
@@ -28,12 +29,12 @@ export default ( { project } ) => {
 	return (
 		<ContentContainer>
 			<h1
-				dangerouslySetInnerHTML={ getContentHtml( project.title ) }
+				dangerouslySetInnerHTML={ getContentHtml( get( project, 'title.rendered' ) ) }
 			/>
 			<Paper>
 				<FeaturedImage src={ project.featured_image } />
 				<CopyBlock
-					dangerouslySetInnerHTML={ getContentHtml( project.content ) }
+					dangerouslySetInnerHTML={ getContentHtml( get( project, 'title.rendered' ) ) }
 				/>
 			</Paper>
 		</ContentContainer>

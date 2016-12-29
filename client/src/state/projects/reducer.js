@@ -12,12 +12,12 @@ import initialState from './initialState';
 export default function( state = initialState, action ) {
 	switch ( action.type ) {
 		case PROJECTS_RECEIVE: {
-			const { found, posts } = action.payload.data;
+			const { total, projects } = action.payload.data;
 
 			return {
 				...state,
-				list: posts,
-				total: found,
+				total,
+				list: projects,
 			};
 		}
 		case PROJECTS_SET_ACTIVE_SLUG:
