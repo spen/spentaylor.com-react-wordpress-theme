@@ -4,6 +4,7 @@
  * External Dependencies
  */
 import React, { noscript } from 'react';
+import { get } from 'lodash';
 
 /**
  * Internal Dependencies
@@ -27,11 +28,11 @@ export default ( { post } ) => {
 	return (
 		<ContentContainer>
 			<h1
-				dangerouslySetInnerHTML={ getContentHtml( post.title ) }
+				dangerouslySetInnerHTML={ getContentHtml( get( post, 'title.rendered' ) ) }
 			/>
 			<Paper>
 				<CopyBlock
-					dangerouslySetInnerHTML={ getContentHtml( post.content ) }
+					dangerouslySetInnerHTML={ getContentHtml( get( post, 'content.rendered' ) ) }
 				/>
 			</Paper>
 		</ContentContainer>

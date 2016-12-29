@@ -12,12 +12,12 @@ import initialState from './initialState';
 export default function( state = initialState, action ) {
 	switch ( action.type ) {
 		case BLOG_POSTS_RECEIVE: {
-			const { found, posts } = action.payload.data;
+			const { total, posts } = action.payload.data;
 
 			return {
 				...state,
+				total,
 				list: posts,
-				total: found,
 			};
 		}
 		case BLOG_SET_ACTIVE_POST_SLUG:
