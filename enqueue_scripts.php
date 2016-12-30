@@ -9,6 +9,11 @@ class Enqueue_Scripts {
 
 	function enqueue_scripts() {
 		$theme_path = get_stylesheet_directory_uri();
+		$initial_data = array();
+
+		if ( is_single() ) {
+			$initial_data[ 'POST_DATA' ] = get_post();
+		}
 
 		wp_register_script( 
 			'bundle', 
