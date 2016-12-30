@@ -8,7 +8,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { browserHistory, IndexRoute, Route, Router } from 'react-router';
+import { browserHistory, IndexRoute, Redirect, Route, Router } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import 'normalize.css';
@@ -102,6 +102,8 @@ ReactDOM.render(
 						onEnter={ onProjectEnter }
 					/>
 				</Route>
+				<Redirect from="/portfolio" to="/projects" />
+				<Redirect from="/portfolio/:slug" to="/projects/:slug" />
 				<Route path="*" />
 			</Route>
 		</Router>
