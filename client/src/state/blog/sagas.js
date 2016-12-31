@@ -37,7 +37,7 @@ import {
 export function* fetchPosts() {
 	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/posts';
 	const response = yield call( request, requestURL, {
-		parse: parsePosts
+		parse: parsePosts,
 	} );
 
 	if ( ! response.err ) {
