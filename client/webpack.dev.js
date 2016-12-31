@@ -5,10 +5,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
     devtool: 'inline-source-map',
+    resolve: {
+        root: path.resolve('./client/src'),
+        extensions: ['', '.js']
+    },
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './src/index'
+        './client/src/index'
     ],
     output: {
         path: path.join(__dirname, 'dev'),
@@ -19,7 +23,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './src/index.template.html',
+            template: './client/src/index.template.html',
             inject: true
         }),
         new webpack.NoErrorsPlugin(),
@@ -54,9 +58,5 @@ module.exports = {
                 loader: 'file-loader'
             }
         ]
-    },
-    resolve: {
-        root: path.resolve('./src'),
-        extensions: ['', '.js']
     }
 };
