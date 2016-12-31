@@ -53,17 +53,17 @@
     "webpack-dev-server": "^1.9.0"
   },
   "scripts": {
-    "clean": "rimraf dev",
-    "clean-dist": "rimraf dist",
-    "build": "npm run clean && webpack --config webpack.dev.js",
-    "export": "npm run clean-dist && webpack --config webpack.prod.js",
-    "lint": "eslint src",
-    "start": "npm run build && node server.js"
+    "clean": "rimraf client/dev",
+    "clean-dist": "rimraf client/dist",
+    "build": "npm run clean && webpack --config client/webpack.dev.js",
+    "export": "npm run clean-dist && webpack --config client/webpack.prod.js",
+    "lint": "eslint client/src",
+    "start": "npm run build && node client/server.js"
   },
   "pre-commit": [
     "lint"
   ],
-  "main": "src/index.js",
+  "main": "client/src/index.js",
   "repository": "git@github.com:spen/spen.github.io-react.git",
   "author": "Spen Taylor <spen_@hotmail.co.uk>"
 }
