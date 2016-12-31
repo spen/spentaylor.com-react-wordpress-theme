@@ -13,16 +13,16 @@ import { getCurrentContentPath } from 'state/routing/selectors';
 
 const wheelForContent = WrappedComponent => {
 	class WheelForContentComponent extends PureComponent {
-
-		constructor(props) {
-			super(props);
+		constructor( props ) {
+			super( props );
 			this.debouncedNavigate = debounce( this.navigate, 1000, { leading: true } );
 			this.handleWheel = this.handleWheel.bind( this );
 		}
 
 		navigate() {
-			if (this.props.currentContentPath) {
-				browserHistory.push(this.props.currentContentPath);
+			const { currentContentPath } = this.props;
+			if ( currentContentPath ) {
+				browserHistory.push( currentContentPath );
 			}
 		}
 
@@ -30,7 +30,7 @@ const wheelForContent = WrappedComponent => {
 			if ( event.deltaY > 15 ) {
 				this.debouncedNavigate();
 			}
-		};
+		}
 
 		render() {
 			return <WrappedComponent onWheel={ this.handleWheel } />;
@@ -42,6 +42,6 @@ const wheelForContent = WrappedComponent => {
 			currentContentPath: getCurrentContentPath( state ),
 		} )
 	)( WheelForContentComponent );
-}
+};
 
 export default wheelForContent;

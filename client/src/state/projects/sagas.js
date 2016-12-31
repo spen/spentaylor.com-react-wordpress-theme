@@ -37,13 +37,13 @@ import {
 export function* fetchProjects() {
 	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/jetpack-portfolio';
 	const response = yield call( request, requestURL, {
-		parse: parseProjects
+		parse: parseProjects,
 	} );
 
 	if ( ! response.err ) {
 		yield put( recieveProjects( response ) );
 	} else {
-		yield put(setProjectsError( 'Something went wrong while connecting to wordpress :(' ) );
+		yield put( setProjectsError( 'Something went wrong while connecting to wordpress :(' ) );
 	}
 }
 
