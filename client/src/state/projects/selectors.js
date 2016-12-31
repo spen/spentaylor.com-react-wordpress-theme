@@ -3,6 +3,10 @@
  */
 import { indexOf, find, get } from 'lodash';
 
+export function getProjectTotal( state ) {
+	return get( state, 'projects.total' );
+}
+
 export function getProjects( state ) {
 	return get( state, 'projects.list' );
 }

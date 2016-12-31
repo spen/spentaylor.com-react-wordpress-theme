@@ -3,6 +3,10 @@
  */
 import { indexOf, find, get } from 'lodash';
 
+export function getPostsTotal( state ) {
+	return get( state, 'blog.total' );
+}
+
 export function getPosts( state ) {
 	return get( state, 'blog.list' );
 }

@@ -11,7 +11,7 @@ import ContentContainer from 'components/ContentContainer';
 import CopyBlock from 'components/CopyBlock';
 import ErrorText from 'components/ErrorText';
 import Paper from 'components/Paper';
-import { getProjectsError } from 'state/blog/selectors';
+import { getProjectsError } from 'state/projects/selectors';
 
 export const ProjectError = ( { projectsError } ) => {
 	return (

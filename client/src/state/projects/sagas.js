@@ -32,6 +32,7 @@ import {
 	getProjects,
 	getProjectsError,
 	getPreviousProjectSlug,
+	getProjectTotal,
 } from './selectors';
 
 export function* fetchProjects() {
@@ -50,10 +51,11 @@ export function* fetchProjects() {
 export function* setActiveProject( action ) {
 	const { slug } = action;
 	const projects = yield select( getProjects );
+	const total = yield select( getProjectTotal );
 
 	yield put( clearProjectsError() );
 
-	if ( isEmpty( projects ) ) {
+	if ( isEmpty( projects ) || total !== projects.length ) {
 		yield call( fetchProjects );
 	}
 
@@ -81,8 +83,9 @@ export function* setActiveProject( action ) {
 
 export function* setDefaultProject( ) {
 	let projects = yield select( getProjects );
+	const total = yield select( getProjectTotal );
 
-	if ( isEmpty( projects ) ) {
+	if ( isEmpty( projects ) || total !== projects.length ) {
 		yield call( fetchProjects );
 	}
 
