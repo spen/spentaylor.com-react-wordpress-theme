@@ -10,9 +10,20 @@ class Enqueue_Scripts {
 	function enqueue_scripts() {
 		$theme_path = get_stylesheet_directory_uri();
 		$initial_data = array();
+		$post = get_post();
 
 		if ( is_single() ) {
-			$initial_data[ 'POST_DATA' ] = get_post();
+			// TODO: There must be a clean way to get the same format as with the REST API
+			$initial_data[ 'POST_DATA' ] = array(
+				'title' => array(
+					'rendered' => $post->post_title
+				),
+				'content' => array(
+					'rendered' => apply_filters( 'the_contents', $post->post_content )
+				),
+				'featured_image' => get_the_post_thumbnail_url( null, 'full' ),
+				'type' => $post->post_type
+			);
 		}
 
 		wp_register_script( 
