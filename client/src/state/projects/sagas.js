@@ -32,28 +32,30 @@ import {
 	getProjects,
 	getProjectsError,
 	getPreviousProjectSlug,
+	getProjectTotal,
 } from './selectors';
 
 export function* fetchProjects() {
 	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/jetpack-portfolio';
 	const response = yield call( request, requestURL, {
-		parse: parseProjects
+		parse: parseProjects,
 	} );
 
 	if ( ! response.err ) {
 		yield put( recieveProjects( response ) );
 	} else {
-		yield put(setProjectsError( 'Something went wrong while connecting to wordpress :(' ) );
+		yield put( setProjectsError( 'Something went wrong while connecting to wordpress :(' ) );
 	}
 }
 
 export function* setActiveProject( action ) {
 	const { slug } = action;
 	const projects = yield select( getProjects );
+	const total = yield select( getProjectTotal );
 
 	yield put( clearProjectsError() );
 
-	if ( isEmpty( projects ) ) {
+	if ( isEmpty( projects ) || total !== projects.length ) {
 		yield call( fetchProjects );
 	}
 
@@ -81,8 +83,9 @@ export function* setActiveProject( action ) {
 
 export function* setDefaultProject( ) {
 	let projects = yield select( getProjects );
+	const total = yield select( getProjectTotal );
 
-	if ( isEmpty( projects ) ) {
+	if ( isEmpty( projects ) || total !== projects.length ) {
 		yield call( fetchProjects );
 	}
 

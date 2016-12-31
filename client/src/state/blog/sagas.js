@@ -31,13 +31,14 @@ import {
 	getPostBySlug,
 	getPosts,
 	getPostsError,
+	getPostsTotal,
 	getPreviousPostSlug,
 } from './selectors';
 
 export function* fetchPosts() {
 	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/posts';
 	const response = yield call( request, requestURL, {
-		parse: parsePosts
+		parse: parsePosts,
 	} );
 
 	if ( ! response.err ) {
@@ -50,12 +51,13 @@ export function* fetchPosts() {
 export function* setActivePost( action ) {
 	const { slug } = action;
 	const posts = yield select( getPosts );
+	const total = yield select( getPostsTotal );
 
 	yield put( clearPostsError() );
 
 	// TODO: handle cases where there are still no posts, this assumes
 	// that fetching posts always successfully returns a number of posts.
-	if ( isEmpty( posts ) ) {
+	if ( isEmpty( posts ) || total !== posts.length ) {
 		yield call( fetchPosts );
 	}
 
@@ -83,10 +85,11 @@ export function* setActivePost( action ) {
 
 export function* setDefaultPost( ) {
 	let posts = yield select( getPosts );
+	const total = yield select( getPostsTotal );
 
 	// TODO: handle cases where there are still no posts, this assumes
 	// that fetching posts always successfully returns a number of posts.
-	if ( isEmpty( posts ) ) {
+	if ( isEmpty( posts ) || total !== posts.length ) {
 		yield call( fetchPosts );
 	}
 
