@@ -22,6 +22,7 @@ class Enqueue_Scripts {
 					'rendered' => apply_filters( 'the_contents', $post->post_content )
 				),
 				'featured_image' => get_the_post_thumbnail_url( null, 'full' ),
+				'slug' => $post->post_name,
 				'type' => $post->post_type
 			);
 		}
