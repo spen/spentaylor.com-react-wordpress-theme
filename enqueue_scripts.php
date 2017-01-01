@@ -19,7 +19,7 @@ class Enqueue_Scripts {
 					'rendered' => $post->post_title
 				),
 				'content' => array(
-					'rendered' => apply_filters( 'the_contents', $post->post_content )
+					'rendered' => wpautop( $post->post_content )
 				),
 				'featured_image' => get_the_post_thumbnail_url( null, 'full' ),
 				'slug' => $post->post_name,

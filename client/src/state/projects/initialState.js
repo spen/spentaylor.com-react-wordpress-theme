@@ -7,7 +7,7 @@ const initialState = {
 };
 
 if ( POST_DATA && POST_DATA.type === 'jetpack-portfolio' ) {
-	initialState.list.push( POST_DATA )
+	initialState.list.push( POST_DATA );
 }
 
 export default initialState;
