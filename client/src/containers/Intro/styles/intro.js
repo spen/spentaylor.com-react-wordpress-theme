@@ -12,6 +12,7 @@ export const introStyles = css`
     display: table;
     vertical-align: middle;
     text-align: center;
+    color: white;
 `;
 
 const Intro = styled.div`${ introStyles }`;
