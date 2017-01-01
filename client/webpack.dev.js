@@ -6,13 +6,13 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = {
     devtool: 'inline-source-map',
     resolve: {
-        root: path.resolve('./client/src'),
+        root: path.resolve( path.join(__dirname, 'src') ),
         extensions: ['', '.js']
     },
     entry: [
         'webpack-dev-server/client?http://localhost:3000',
         'webpack/hot/only-dev-server',
-        './client/src/index'
+        path.join(__dirname, 'src/index')
     ],
     output: {
         path: path.join(__dirname, 'dev'),
@@ -23,7 +23,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
-            template: './client/src/index.template.html',
+            template: path.join(__dirname, 'src/index.template.html'),
             inject: true
         }),
         new webpack.NoErrorsPlugin(),

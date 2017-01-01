@@ -4,8 +4,12 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
+    resolve: {
+        root: path.resolve( path.join(__dirname, 'src') ),
+        extensions: ['', '.js']
+    },
     entry: [
-        './src/index'
+        path.join(__dirname, 'src/index')
     ],
     output: {
         path: path.join(__dirname, 'dist'),
@@ -47,9 +51,5 @@ module.exports = {
                 loader: 'file-loader'
             }
         ]
-    },
-    resolve: {
-        root: path.resolve('./src'),
-        extensions: ['', '.js']
     }
 };
