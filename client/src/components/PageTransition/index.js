@@ -21,6 +21,10 @@ export class PageTransition extends Component {
 		const { location, children } = this.props;
 		const direction = get( location, 'state.direction' );
 
+		if ( ! direction ) {
+			return <div>{ children }</div>;
+		}
+
 		return (
 			<RouteTransition
 				atEnter={ direction === 'previous' ? rightState : leftState }
