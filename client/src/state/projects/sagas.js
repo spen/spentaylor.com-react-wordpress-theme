@@ -36,7 +36,7 @@ import {
 } from './selectors';
 
 export function* fetchProjects() {
-	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/jetpack-portfolio';
+	const requestURL = 'http://www.spentaylor.com/wp-json/wp/v2/jetpack-portfolio?callback=?';
 	const response = yield call( request, requestURL, {
 		parse: parseProjects,
 	} );
