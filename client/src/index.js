@@ -17,13 +17,12 @@ import 'normalize.css';
  * Internal Dependencies
  */
 import App from 'containers/App';
-
-import AboutPage from 'containers/AboutPage';
-import BlogPage from 'containers/BlogPage';
-import BlogPageContent from 'containers/BlogPage/Content';
-import ContactPage from 'containers/ContactPage';
-import ProjectsPage from 'containers/ProjectsPage';
-import ProjectContent from 'containers/ProjectsPage/Content';
+import AboutPage from 'pages/About';
+import BlogPage from 'pages/Blog';
+import BlogPageContent from 'pages/Blog/Content';
+import ContactPage from 'pages/Contact';
+import ProjectsPage from 'pages/Projects';
+import ProjectContent from 'pages/Projects/Content';
 import configureStore from './store';
 
 import 'assets/temp-styles.css';
