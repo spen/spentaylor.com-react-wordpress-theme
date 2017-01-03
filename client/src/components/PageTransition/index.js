@@ -16,17 +16,34 @@ const mapStyles = styles => ( {
 	width: '100%',
 } );
 
+const getTransitionStates = direction => {
+	if ( direction === 'next' ) {
+		return {
+			atEnter: leftState,
+			atLeave: rightState,
+		};
+	}
+
+	if ( direction === 'previous' ) {
+		return {
+			atEnter: rightState,
+			atLeave: leftState,
+		};
+	}
+
+	return {
+		atEnter: activeState,
+		atLeave: activeState,
+	};
+};
+
 const PageTransition = ( { children, location } ) => {
 	const direction = get( location, 'state.direction' );
-
-	if ( ! direction ) {
-		return <div>{ children }</div>;
-	}
+	const transitionStates = getTransitionStates( direction );
 
 	return (
 		<RouteTransition
-			atEnter={ direction === 'previous' ? rightState : leftState }
-			atLeave={ direction === 'previous' ? leftState : rightState }
+			{ ...transitionStates }
 			atActive={ activeState }
 			mapStyles={ mapStyles }
 			pathname={ location.pathname }
