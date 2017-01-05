@@ -8,7 +8,7 @@ import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { browserHistory, IndexRoute, Redirect, Route, Router } from 'react-router';
+import { browserHistory, Router } from 'react-router';
 import { syncHistoryWithStore } from 'react-router-redux';
 
 import 'normalize.css';
@@ -59,6 +59,7 @@ function onProjectEnter( routeData ) {
 }
 
 const originalTitle = document.title;
+
 function resetTitle() {
 	// Nasty little hack :/
 	window.setTimeout( () => document.title = originalTitle, 0 );
@@ -66,34 +67,73 @@ function resetTitle() {
 
 const rootElement = document.getElementById( 'root' );
 
+const routes = {
+	component: App,
+	childRoutes: [
+		{
+			path: '/',
+			onEnter: resetTitle,
+		},
+		{
+			path: '/about',
+			component: AboutPage,
+		},
+		{
+			path: '/blog',
+			component: BlogPage,
+			indexRoute: {
+				component: BlogPageContent,
+				onEnter: onBlogRootEnter,
+			},
+			childRoutes: [ {
+				component: BlogPageContent,
+				path: '/blog/:slug',
+				onEnter: onBlogPostEnter,
+			} ],
+		},
+		{
+			path: '/contact',
+			component: ContactPage,
+		},
+		{
+			// <Redirect from="/portfolio" to="/projects" />
+			path: '/portfolio',
+			onEnter: ( nextState, replace, next ) => {
+				replace( '/projects' );
+				next();
+			},
+		},
+		{
+			// <Redirect from="/portfolio/:slug" to="/projects/:slug" />
+			path: '/portfolio/:slug',
+			onEnter: ( nextState, replace, next ) => {
+				replace( '/projects/' + nextState.params.slug );
+				next();
+			},
+		},
+		{
+			path: '/projects',
+			component: ProjectsPage,
+			indexRoute: {
+				component: ProjectContent,
+				onEnter: onProjectsRootEnter,
+			},
+			childRoutes: [ {
+				component: ProjectContent,
+				path: '/projects/:slug',
+				onEnter: onProjectEnter,
+			} ],
+		},
+		{
+			path: '*',
+			// TODO: NoPage route
+		},
+	],
+};
+
 ReactDOM.render(
 	<Provider store={ store }>
-		<Router history={ history }>
-			<Route path="/" component={ App } onEnter={ resetTitle }>
-				<IndexRoute onEnter={ resetTitle } />
-				<Route path="/about" component={ AboutPage } />
-				<Route path="/blog" component={ BlogPage } >
-					<IndexRoute component={ BlogPageContent } onEnter={ onBlogRootEnter } />
-					<Route
-						component={ BlogPageContent }
-						path="/blog/:slug"
-						onEnter={ onBlogPostEnter }
-					/>
-				</Route>
-				<Route path="/contact" component={ ContactPage } />
-				<Route path="/projects" component={ ProjectsPage } >
-					<IndexRoute component={ ProjectContent } onEnter={ onProjectsRootEnter } />
-					<Route
-						component={ ProjectContent }
-						path="/projects/:slug"
-						onEnter={ onProjectEnter }
-					/>
-				</Route>
-				<Redirect from="/portfolio" to="/projects" />
-				<Redirect from="/portfolio/:slug" to="/projects/:slug" />
-				<Route path="*" />
-			</Route>
-		</Router>
+		<Router history={ history } routes={ routes } />
 	</Provider>,
 	rootElement
 );
