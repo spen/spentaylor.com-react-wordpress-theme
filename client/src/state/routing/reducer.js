@@ -8,10 +8,6 @@ import { chain, includes } from 'lodash';
  * Internal Dependencies
  */
 import contentPaths from 'constants/contentPaths';
-import {
-	ROUTING_SET_NEXT_CONTENT_PATH,
-	ROUTING_SET_PREVIOUS_CONTENT_PATH,
-} from 'state/action-types';
 
 const initialState = {
 	locationBeforeTransitions: null,
@@ -46,16 +42,6 @@ export default function( state = initialState, action ) {
 
 			return newState;
 		}
-		case ROUTING_SET_NEXT_CONTENT_PATH:
-			return {
-				...state,
-				nextContentPath: action.path,
-			};
-		case ROUTING_SET_PREVIOUS_CONTENT_PATH:
-			return {
-				...state,
-				previousContentPath: action.path,
-			};
 		default:
 			return state;
 	}
