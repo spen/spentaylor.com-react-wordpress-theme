@@ -32,15 +32,8 @@ export default function( initialState = {}, history ) {
 	// Extensions
 	store.runSaga = sagaMiddleware.run;
 
-	each( blogSagas, saga => {
-		sagaMiddleware.run( saga );
-	} );
-
-	each( contactFormSagas, saga => {
-		sagaMiddleware.run( saga );
-	} );
-
-	each( projectsSagas, saga => {
+	// run all exported sagas
+	each( [ ...blogSagas, ...contactFormSagas, ...projectsSagas ], saga => {
 		sagaMiddleware.run( saga );
 	} );
 

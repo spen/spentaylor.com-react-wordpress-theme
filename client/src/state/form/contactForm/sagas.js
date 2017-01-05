@@ -25,7 +25,7 @@ export function* submitForm( action ) {
 		headers: new Headers( {
 			Accept: 'application/json',
 		} ),
-		// body,
+		body,
 	};
 
 	const response = yield call( request, requestURL, requestOptions );
