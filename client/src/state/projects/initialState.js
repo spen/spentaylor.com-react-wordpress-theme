@@ -4,6 +4,8 @@ const initialState = {
 	total: 0,
 	activeSlug: null,
 	error: {},
+	nextContentPath: null,
+	previousContentPath: null,
 };
 
 if ( POST_DATA && POST_DATA.type === 'jetpack-portfolio' ) {

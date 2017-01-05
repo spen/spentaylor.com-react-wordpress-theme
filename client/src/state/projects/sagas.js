@@ -15,14 +15,12 @@ import {
 } from 'state/action-types';
 import request from 'utils/request';
 import {
-	setNextContentPath,
-	setPreviousContentPath,
-} from 'state/routing/actions';
-import {
 	clearProjectsError,
 	recieveProjects,
 	setActiveProjectSlug,
 	setProjectsError,
+	setNextContentPath,
+	setPreviousContentPath,
 } from './actions';
 import parseProjects from './parseProjects';
 import {
