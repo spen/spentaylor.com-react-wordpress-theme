@@ -13,7 +13,6 @@ import createReducer from './reducers';
 import blogSagas from 'state/blog/sagas';
 import contactFormSagas from 'state/form/contactForm/sagas';
 import projectsSagas from 'state/projects/sagas';
-import routingSagas from 'state/routing/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
 
@@ -42,10 +41,6 @@ export default function( initialState = {}, history ) {
 	} );
 
 	each( projectsSagas, saga => {
-		sagaMiddleware.run( saga );
-	} );
-
-	each( routingSagas, saga => {
 		sagaMiddleware.run( saga );
 	} );
 

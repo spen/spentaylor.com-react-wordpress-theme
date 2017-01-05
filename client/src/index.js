@@ -38,12 +38,6 @@ function onBlogRootEnter() {
 	} );
 }
 
-function onBlogRootLeave() {
-	store.dispatch( {
-		type: 'ROUTING_CLEAR_PREVIOUS_AND_NEXT',
-	} );
-}
-
 function onBlogPostEnter( routeData ) {
 	store.dispatch( {
 		type: 'BLOG_SET_ACTIVE_POST',
@@ -54,12 +48,6 @@ function onBlogPostEnter( routeData ) {
 function onProjectsRootEnter() {
 	store.dispatch( {
 		type: 'PROJECTS_SET_DEFAULT',
-	} );
-}
-
-function onProjectsRootLeave() {
-	store.dispatch( {
-		type: 'ROUTING_CLEAR_PREVIOUS_AND_NEXT',
 	} );
 }
 
@@ -84,7 +72,7 @@ ReactDOM.render(
 			<Route path="/" component={ App } onEnter={ resetTitle }>
 				<IndexRoute onEnter={ resetTitle } />
 				<Route path="/about" component={ AboutPage } />
-				<Route path="/blog" component={ BlogPage } onLeave={ onBlogRootLeave } >
+				<Route path="/blog" component={ BlogPage } >
 					<IndexRoute component={ BlogPageContent } onEnter={ onBlogRootEnter } />
 					<Route
 						component={ BlogPageContent }
@@ -93,7 +81,7 @@ ReactDOM.render(
 					/>
 				</Route>
 				<Route path="/contact" component={ ContactPage } />
-				<Route path="/projects" component={ ProjectsPage } onLeave={ onProjectsRootLeave } >
+				<Route path="/projects" component={ ProjectsPage } >
 					<IndexRoute component={ ProjectContent } onEnter={ onProjectsRootEnter } />
 					<Route
 						component={ ProjectContent }
