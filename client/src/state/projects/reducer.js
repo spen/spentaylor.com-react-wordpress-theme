@@ -4,6 +4,8 @@
 import {
 	PROJECTS_ERROR_CLEAR,
 	PROJECTS_ERROR_SET,
+	PROJECTS_NEXT_PATH_SET,
+	PROJECTS_PREVIOUS_PATH_SET,
 	PROJECTS_RECEIVE,
 	PROJECTS_SET_ACTIVE_SLUG,
 } from 'state/action-types';
@@ -36,6 +38,16 @@ export default function( state = initialState, action ) {
 			return {
 				...state,
 				error: initialState.projectsError,
+			};
+		case PROJECTS_NEXT_PATH_SET:
+			return {
+				...state,
+				nextContentPath: action.path,
+			};
+		case PROJECTS_PREVIOUS_PATH_SET:
+			return {
+				...state,
+				previousContentPath: action.path,
 			};
 		default:
 			return state;

@@ -15,14 +15,12 @@ import {
 } from 'state/action-types';
 import request from 'utils/request';
 import {
-	setNextContentPath,
-	setPreviousContentPath,
-} from 'state/routing/actions';
-import {
 	clearPostsError,
 	recievePosts,
 	setActivePostSlug,
+	setNextContentPath,
 	setPostsError,
+	setPreviousContentPath,
 } from './actions';
 import parsePosts from './parsePosts';
 import {

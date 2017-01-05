@@ -4,6 +4,8 @@ const initialState = {
 	total: 0,
 	activePostSlug: null,
 	postsError: {},
+	nextContentPath: null,
+	previousContentPath: null,
 };
 
 if ( POST_DATA && POST_DATA.type === 'post' ) {

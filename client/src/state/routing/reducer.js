@@ -18,6 +18,7 @@ const initialState = {
 	currentContentPath: null,
 	nextContentPath: null,
 	previousContentPath: null,
+	currentPageNamespace: null,
 };
 
 function getContentPathSegment( path ) {
@@ -35,12 +36,11 @@ export default function( state = initialState, action ) {
 				...state,
 				locationBeforeTransitions: action.payload,
 			};
-			const contentPath = getContentPathSegment( action.payload.pathname );
+			const pageNamespace = getContentPathSegment( action.payload.pathname );
 
-			if (
-				action.payload.pathname &&
-				includes( contentPaths, contentPath )
-			) {
+			newState.currentPageNamespace = pageNamespace;
+
+			if ( action.payload.pathname && includes( contentPaths, pageNamespace ) ) {
 				newState.currentContentPath = action.payload.pathname;
 			}
 

@@ -5,6 +5,8 @@ import {
 	PROJECTS_ERROR_CLEAR,
 	PROJECTS_ERROR_SET,
 	PROJECTS_FETCH,
+	PROJECTS_NEXT_PATH_SET,
+	PROJECTS_PREVIOUS_PATH_SET,
 	PROJECTS_RECEIVE,
 	PROJECTS_SET_ACTIVE,
 	PROJECTS_SET_ACTIVE_SLUG,
@@ -47,5 +49,19 @@ export function setProjectsError( message ) {
 export function clearProjectsError() {
 	return {
 		type: PROJECTS_ERROR_CLEAR,
+	};
+}
+
+export function setNextContentPath( path ) {
+	return {
+		type: PROJECTS_NEXT_PATH_SET,
+		path,
+	};
+}
+
+export function setPreviousContentPath( path ) {
+	return {
+		type: PROJECTS_PREVIOUS_PATH_SET,
+		path,
 	};
 }
