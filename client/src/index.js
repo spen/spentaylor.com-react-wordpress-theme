@@ -22,6 +22,7 @@ import aboutRoutes from 'pages/About/routes';
 import blogRoutes from 'pages/Blog/routes';
 import contactRoutes from 'pages/Contact/routes';
 import projectRoutes from 'pages/Projects/routes';
+import noPageRoutes from 'pages/NoPage/routes';
 
 import 'assets/temp-styles.css';
 
@@ -47,10 +48,7 @@ const routes = {
 		...blogRoutes,
 		...contactRoutes,
 		...projectRoutes,
-		{
-			path: '*',
-			// TODO: NoPage route
-		},
+		...noPageRoutes,
 	],
 };
 
