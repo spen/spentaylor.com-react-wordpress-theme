@@ -22,7 +22,7 @@ const StyledShowIntroButton = buttonStyler( ShowIntroButton );
 const StyledShowContentButton = buttonStyler( ShowContentButton );
 
 export const Header = ( { currentContentPath, showContent } ) => (
-	<StyledHeader show={ !! currentContentPath } showContent={ showContent }>
+	<StyledHeader show={ !! currentContentPath || showContent } showContent={ showContent }>
 		<StyledPreviousButton showContent={ showContent } />
 		<ToggleContent showContent={ showContent } >
 			<StyledShowIntroButton showContent={ showContent } />
