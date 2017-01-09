@@ -12,6 +12,7 @@ import { takeEvery } from 'redux-saga';
 import {
 	PROJECTS_FETCH,
 	PROJECTS_SET_ACTIVE,
+	PROJECTS_SET_DEFAULT,
 } from 'state/action-types';
 import request from 'utils/request';
 import {
@@ -113,7 +114,7 @@ export function* setActiveProjectWatcher() {
 }
 
 export function* setDefaultProjectWatcher() {
-	yield takeEvery( 'PROJECTS_SET_DEFAULT', setDefaultProject );
+	yield takeEvery( PROJECTS_SET_DEFAULT, setDefaultProject );
 }
 
 export function* fetchProjectsWatcher() {

@@ -10,6 +10,7 @@ import {
 	PROJECTS_RECEIVE,
 	PROJECTS_SET_ACTIVE,
 	PROJECTS_SET_ACTIVE_SLUG,
+	PROJECTS_SET_DEFAULT,
 } from 'state/action-types';
 
 export function fetchProjects() {
@@ -36,6 +37,12 @@ export function setActiveProjectSlug( slug ) {
 	return {
 		type: PROJECTS_SET_ACTIVE_SLUG,
 		slug,
+	};
+}
+
+export function setDefaultProject() {
+	return {
+		type: PROJECTS_SET_DEFAULT,
 	};
 }
 

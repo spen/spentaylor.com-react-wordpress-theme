@@ -30,22 +30,6 @@ import 'assets/temp-styles.css';
 const store = configureStore( {}, browserHistory );
 const history = syncHistoryWithStore( browserHistory, store );
 
-// TODO: Have modules define their own routes,
-// this isn't the place for these actions.
-
-function onProjectsRootEnter() {
-	store.dispatch( {
-		type: 'PROJECTS_SET_DEFAULT',
-	} );
-}
-
-function onProjectEnter( routeData ) {
-	store.dispatch( {
-		type: 'PROJECTS_SET_ACTIVE',
-		slug: routeData.params.slug,
-	} );
-}
-
 const originalTitle = document.title;
 
 function resetTitle() {
@@ -102,12 +86,10 @@ const routes = {
 			component: ProjectsPage,
 			indexRoute: {
 				component: ProjectContent,
-				onEnter: onProjectsRootEnter,
 			},
 			childRoutes: [ {
 				component: ProjectContent,
 				path: '/projects/:slug',
-				onEnter: onProjectEnter,
 			} ],
 		},
 		{
