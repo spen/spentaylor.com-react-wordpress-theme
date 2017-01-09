@@ -32,18 +32,6 @@ const history = syncHistoryWithStore( browserHistory, store );
 
 // TODO: Have modules define their own routes,
 // this isn't the place for these actions.
-function onBlogRootEnter() {
-	store.dispatch( {
-		type: 'BLOG_SET_DEFAULT_POST',
-	} );
-}
-
-function onBlogPostEnter( routeData ) {
-	store.dispatch( {
-		type: 'BLOG_SET_ACTIVE_POST',
-		slug: routeData.params.slug,
-	} );
-}
 
 function onProjectsRootEnter() {
 	store.dispatch( {
@@ -83,12 +71,10 @@ const routes = {
 			component: BlogPage,
 			indexRoute: {
 				component: BlogPageContent,
-				onEnter: onBlogRootEnter,
 			},
 			childRoutes: [ {
 				component: BlogPageContent,
 				path: '/blog/:slug',
-				onEnter: onBlogPostEnter,
 			} ],
 		},
 		{

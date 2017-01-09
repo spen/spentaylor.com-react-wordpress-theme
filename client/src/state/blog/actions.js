@@ -10,6 +10,7 @@ import {
 	BLOG_PREVIOUS_PATH_SET,
 	BLOG_SET_ACTIVE_POST,
 	BLOG_SET_ACTIVE_POST_SLUG,
+	BLOG_SET_DEFAULT_POST,
 } from 'state/action-types';
 
 export function fetchPosts() {
@@ -36,6 +37,12 @@ export function setActivePostSlug( slug ) {
 	return {
 		type: BLOG_SET_ACTIVE_POST_SLUG,
 		slug,
+	};
+}
+
+export function setDefaultPost() {
+	return {
+		type: BLOG_SET_DEFAULT_POST,
 	};
 }
 
