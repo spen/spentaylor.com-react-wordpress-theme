@@ -12,6 +12,7 @@ import { takeEvery } from 'redux-saga';
 import {
 	BLOG_POSTS_FETCH,
 	BLOG_SET_ACTIVE_POST,
+	BLOG_SET_DEFAULT_POST,
 } from 'state/action-types';
 import request from 'utils/request';
 import {
@@ -117,7 +118,7 @@ export function* setActivePostWatcher() {
 }
 
 export function* setDefaultPostWatcher() {
-	yield takeEvery( 'BLOG_SET_DEFAULT_POST', setDefaultPost );
+	yield takeEvery( BLOG_SET_DEFAULT_POST, setDefaultPost );
 }
 
 export function* fetchPostsWatcher() {
