@@ -2,6 +2,7 @@ var path = require('path');
 var webpack = require('webpack');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+var DashboardPlugin = require('webpack-dashboard/plugin');
 
 module.exports = {
     devtool: 'inline-source-map',
@@ -29,7 +30,8 @@ module.exports = {
         new webpack.NoErrorsPlugin(),
         new ExtractTextPlugin("style.css", {
             allChunks: true
-        })
+        }),
+        new DashboardPlugin()
     ],
     module: {
         preLoaders: [

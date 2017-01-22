@@ -27,6 +27,7 @@
     "redux-saga": "^0.13.0",
     "styled-components": "^1.0.11",
     "svg-react-loader": "^0.3.7",
+    "webpack-dashboard": "^0.2.1",
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
@@ -56,9 +57,12 @@
     "clean": "rimraf client/dev",
     "clean-dist": "rimraf client/dist",
     "build": "npm run clean && webpack --config client/webpack.dev.js",
+    "build-dash": "npm run clean && webpack-dashboard -c cyan -- webpack --config client/webpack.dev.js",
     "export": "npm run clean-dist && webpack --config client/webpack.prod.js",
+    "export-dash": "npm run clean-dist && webpack-dashboard -c cyan -- webpack --config client/webpack.prod.js",
     "lint": "eslint client/src",
-    "start": "npm run build && node client/server.js"
+    "start": "npm run build && node client/server.js",
+    "start-dash": "webpack-dashboard -c cyan -- npm start"
   },
   "pre-commit": [
     "lint"
