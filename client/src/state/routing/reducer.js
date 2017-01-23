@@ -2,7 +2,13 @@
  * External Dependencies
  */
 import { LOCATION_CHANGE } from 'react-router-redux';
-import { chain, includes } from 'lodash';
+import {
+	compact,
+	first,
+	flowRight as compose,
+	split,
+	includes,
+} from 'lodash';
 
 /**
  * Internal Dependencies
@@ -17,13 +23,13 @@ const initialState = {
 	currentPageNamespace: null,
 };
 
-function getContentPathSegment( path ) {
-	return chain( path )
-		.split( '/' )
-		.compact()
-		.first()
-		.value();
-}
+const getContentPathSegment = path => (
+	compose(
+		first,
+		compact,
+		path => split( path, '/' )
+	)( path )
+);
 
 export default function( state = initialState, action ) {
 	switch ( action.type ) {
