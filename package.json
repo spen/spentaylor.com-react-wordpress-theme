@@ -4,9 +4,13 @@
   "description": "",
   "license": "MIT",
   "dependencies": {
+    "babel-plugin-lodash": "^3.2.11",
     "babel-plugin-react-transform": "^2.0.2",
     "babel-plugin-transform-react-jsx-img-import": "^0.1.3",
     "babel-polyfill": "^6.16.0",
+    "babel-preset-es2015": "^6.22.0",
+    "babel-preset-react": "^6.22.0",
+    "babel-preset-stage-0": "^6.22.0",
     "history": "^1.9.0",
     "json-loader": "^0.5.4",
     "lodash": "^4.17.2",
@@ -31,9 +35,9 @@
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
-    "babel-core": "^5.6.18",
+    "babel-core": "^6.22.1",
     "babel-eslint": "7.1.1",
-    "babel-loader": "^5.1.4",
+    "babel-loader": "^6.2.10",
     "css-loader": "^0.26.0",
     "debug": "^2.2.0",
     "eslint": "^3.10.2",
