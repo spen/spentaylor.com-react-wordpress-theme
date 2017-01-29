@@ -18,7 +18,7 @@ Feel free to clone this proje	ct to play & tinker with it as you please :)
 Here's how to get it running locally:
 
 - Clone by running `git clone git@github.com:spen.github.io-react`
-- Run `yarn install` (because it's 2016! 🎉)
+- Run `yarn install` (because it's 2017! 🎉)
 - Run `npm start` to bundle & serve the project.
 - Finally, hit `http://localhost:3000/`in your browser 🙂
 
