@@ -12,9 +12,11 @@ import SkeletonBar from 'components/SkeletonBar';
 import SkeletonPulse from 'components/SkeletonPulse';
 import FeaturedImage from '../FeaturedImage';
 
+import StyledHeader from '../Project/styles/Header';
+
 export default () => (
 	<ContentContainer>
-		<h2>Loading...</h2>
+		<StyledHeader>Loading...</StyledHeader>
 		<Paper>
 			<FeaturedImage />
 			<div style={ { padding: '10px 30px 30px 30px' } } >

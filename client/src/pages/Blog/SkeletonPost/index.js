@@ -8,10 +8,11 @@ import React from 'react';
  */
 import ContentContainer from 'components/ContentContainer';
 import SkeletonPost from 'components/SkeletonPost';
+import StyledHeading from '../Post/styles/Heading';
 
 export default () => (
 	<ContentContainer>
-		<h2>Loading...</h2>
+		<StyledHeading>Loading...</StyledHeading>
 		<SkeletonPost />
 	</ContentContainer>
 );

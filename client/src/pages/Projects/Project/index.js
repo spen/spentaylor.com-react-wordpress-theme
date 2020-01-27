@@ -13,6 +13,7 @@ import ContentContainer from 'components/ContentContainer';
 import CopyBlock from 'components/CopyBlock';
 import Paper from 'components/Paper';
 import FeaturedImage from '../FeaturedImage';
+import StyledHeader from './styles/Header';
 
 function getContentHtml( content ) {
 	// TODO: Explore html sanitizers to set this safely.
@@ -28,7 +29,7 @@ export default ( { project } ) => {
 
 	return (
 		<ContentContainer>
-			<h1
+			<StyledHeader
 				dangerouslySetInnerHTML={ getContentHtml( get( project, 'title.rendered' ) ) }
 			/>
 			<Paper>
