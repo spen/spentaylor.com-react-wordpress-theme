@@ -43,4 +43,4 @@ export const instagram = {
 	darkColor: '#305777',
 };
 
-export default [ twitter, github, linkedin, instagram ];
+export default [ github, linkedin, instagram ];

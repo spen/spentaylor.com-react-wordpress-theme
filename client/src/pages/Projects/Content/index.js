@@ -1,7 +1,6 @@
 /**
  * External Dependencies
  */
-import { isEmpty } from 'lodash';
 import React from 'react';
 import { connect } from 'react-redux';
 
@@ -10,13 +9,13 @@ import { connect } from 'react-redux';
  */
 import { getActiveProject, getProjectBySlug, getProjectsError } from 'state/projects/selectors';
 import Project from '../Project';
-import ProjectError from '../Error';
+// import ProjectError from '../Error';
 import SkeletonProject from '../SkeletonProject';
 
-export const BlogContent = ( { activeProject, project, projectsError } ) => {
-	if ( ! isEmpty( projectsError ) ) {
-		return <ProjectError />;
-	}
+export const BlogContent = ( { activeProject, project } ) => {
+	// if ( ! isEmpty( projectsError ) ) {
+	// 	return <ProjectError />;
+	// }
 
 	if ( ! project && ! activeProject ) {
 		return <SkeletonProject />;
