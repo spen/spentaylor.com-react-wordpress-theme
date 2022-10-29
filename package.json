@@ -31,7 +31,7 @@
     "redux-saga": "^0.13.0",
     "styled-components": "^1.0.11",
     "svg-react-loader": "^0.3.7",
-    "webpack-dashboard": "^0.2.1",
+    "webpack-dashboard": "^3.3.7",
     "whatwg-fetch": "^2.0.1"
   },
   "devDependencies": {
