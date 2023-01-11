@@ -39,7 +39,7 @@
     "babel-eslint": "7.1.1",
     "babel-loader": "^6.2.10",
     "css-loader": "^0.26.0",
-    "debug": "^2.2.0",
+    "debug": "^3.1.0",
     "eslint": "^3.10.2",
     "eslint-config-wpcalypso": "^0.6.0",
     "eslint-import-resolver-webpack": "0.6.0",
